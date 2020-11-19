@@ -5,6 +5,7 @@ import auth from './modules/auth'
 import config from './modules/config'
 import orders from './modules/orders'
 import members from './modules/members'
+import citys from './modules/citys'
 import companies from './modules/companies'
 
 Vue.use(Vuex)
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     config,
     orders,
     members,
+    citys,
     companies
   }
 })
