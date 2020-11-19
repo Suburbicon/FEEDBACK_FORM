@@ -1,5 +1,5 @@
 **1) В корневом каталоге выполнить команду** 
-composer install
+- composer install
 
 **2) Создать локальную базу данных для проекта**
 
@@ -12,7 +12,7 @@ composer install
 **4) В корне проекта выполнить команды** 
 - php artisan key:generate (создание ключа)
 - php artisan migrate (миграции)
-- php artisan user:create <login> <email> <password> <permissions (root = 1)> (создание пользователя)
+- php artisan user:create login email password permissions (root = 1) (создание пользователя)
 
 **5) В папке /public/admin/dev выполнить команду**
 - npm install
