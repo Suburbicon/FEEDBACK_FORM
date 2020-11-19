@@ -4,17 +4,17 @@
       <SidebarToggler class="d-lg-none" display="md" mobile />
 
       <b-link class="navbar-brand" to="/">
-        <div class="navbar-brand-full">BIG CRM</div>
-        <div class="navbar-brand-minimized">CRM</div>
+        <div class="navbar-brand-full">ADMIN QR</div>
+        <div class="navbar-brand-minimized">QR</div>
         <!--<img class="navbar-brand-full" src="/admin/compiled/img/brand/logo.svg" width="50" height="50" alt="Big Logo">-->
 <!--        <img class="navbar-brand-minimized" src="/admin/compiled/img/brand/logo.svg" width="50" height="50" alt="Big Logo">-->
       </b-link>
 
       <SidebarToggler class="d-md-down-none" display="lg" />
 
-      <b-navbar-nav class="d-md-down-none">
+      <!--<b-navbar-nav class="d-md-down-none">
         <b-nav-item class="px-3" href="https://gobig.kz">TOO "Рога и Копыта"</b-nav-item>
-      </b-navbar-nav>
+      </b-navbar-nav>-->
 
       <b-navbar-nav class="ml-auto">
         <DefaultHeaderDropdownAccnt/>
@@ -40,7 +40,7 @@
     <TheFooter>
       <!--footer-->
       <div>
-        <span class="ml-1">&copy; <a href="https://gobig.kz">GoBig</a> 2019</span>
+        <span class="ml-1">&copy; <a href="#">SmartCall</a> 2020</span>
       </div>
     </TheFooter>
 

@@ -83,6 +83,11 @@ export default new Router({
           component: () => import('../views/members/Members')
         },
         {
+          path: 'city',
+          name: 'Города',
+          component: () => import('../views/citys/Citys')
+        },
+        {
           path: 'companies',
           name: 'Компании',
           component: () => import('../views/companies/Companies')

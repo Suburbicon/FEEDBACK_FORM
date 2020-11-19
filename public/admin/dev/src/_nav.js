@@ -5,52 +5,57 @@ export default {
       url: '/dashboard',
       icon: 'cui-dashboard'
     },
-    {
-      name: 'Настройки',
-      url: '/settings',
-      icon: 'icon-settings',
-      children: [{
-          name: 'Статусы',
-          url: '/settings/1',
-          icon: 'icon-settings'
-      }, {
-          name: 'Виды услуг',
-          url: '/settings/2',
-          icon: 'icon-settings'
-      }, {
-          name: 'Виды деятельности',
-          url: '/settings/3',
-          icon: 'icon-settings'
-      }, {
-          name: 'Справочник банков',
-          url: '/settings/4',
-          icon: 'icon-settings'
-      }, {
-          name: 'Общие настройки',
-          url: '/settings/5',
-          icon: 'icon-settings'
-      }]
-    },
+    // {
+    //   name: 'Настройки',
+    //   url: '/settings',
+    //   icon: 'icon-settings',
+    //   children: [{
+    //       name: 'Статусы',
+    //       url: '/settings/1',
+    //       icon: 'icon-settings'
+    //   }, {
+    //       name: 'Виды услуг',
+    //       url: '/settings/2',
+    //       icon: 'icon-settings'
+    //   }, {
+    //       name: 'Виды деятельности',
+    //       url: '/settings/3',
+    //       icon: 'icon-settings'
+    //   }, {
+    //       name: 'Справочник банков',
+    //       url: '/settings/4',
+    //       icon: 'icon-settings'
+    //   }, {
+    //       name: 'Общие настройки',
+    //       url: '/settings/5',
+    //       icon: 'icon-settings'
+    //   }]
+    // },
     {
       name: 'Заявки',
       url: '/orders',
       icon: 'icon-phone'
     },
+    // {
+    //   name: 'Клиенты',
+    //   url: '/members',
+    //   icon: 'icon-user'
+    // },
     {
-      name: 'Клиенты',
-      url: '/members',
-      icon: 'icon-user'
+      name: 'Города',
+      url: '/city',
+      icon: 'cfa fa-building-o'
     },
-    {
-      name: 'Компании',
-      url: '/companies',
-      icon: 'fa fa-building-o'
-    },
-    {
-      name: 'Сегментация',
-      url: '/segmentation',
-      icon: 'icon-chart'
-    },
+    // {
+    //   name: 'Компании',
+    //   url: '/companies',
+    //   icon: 'fa fa-building-o'
+    // },
+    // {
+    //   name: 'Сегментация',
+    //   url: '/segmentation',
+    //   icon: 'icon-chart'
+    // },
     {
       name: 'Логи',
       url: '/logs',
