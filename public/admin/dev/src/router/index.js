@@ -84,7 +84,7 @@ export default new Router({
         },
         {
           path: 'city',
-          name: 'Города',
+          name: 'Список городов',
           component: () => import('../views/citys/Citys')
         },
         {

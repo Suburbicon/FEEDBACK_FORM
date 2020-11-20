@@ -1,6 +1,6 @@
 <template>
     <b-card-group>
-        <b-card header="Города">
+        <b-card header="Список городов">
             <b-button size="sm" class="mar-top" :hidden="!button_hidden" variant="success" @click="showModal('add')"><i class="fa fa-plus"></i> Добавить</b-button>
             <b-button size="sm" class="mar-top" :hidden="button_hidden" variant="warning" @click="showModal('edit')"><i class="fa fa-edit"></i> Редактировать</b-button>
 
@@ -22,12 +22,6 @@
                 :bordered="true"
                 :items="filtered"
                 :fields="fields">
-
-                <template slot="top-row" slot-scope="{ fields }">
-                    <td v-for="field in fields" :key="field.key">
-                        <b-form-input v-model="filters[field.key]" :placeholder="field.label"></b-form-input>
-                    </td>
-                </template>
 
             </b-table>
 
@@ -68,7 +62,7 @@
   import memberForm from './City'
 
   export default {
-    name: 'Members',
+    name: 'Citys',
     components: {memberForm},
     data: () => {
       return {
@@ -80,18 +74,10 @@
         totalRows: 0,
         perPage: 10,
         fields: [
-          {key: 'name', label: 'ФИО', sortable: true},
-          {key: 'email', label: 'Email', sortable: true},
-          {key: 'phone_mobile', label: 'Телефон', sortable: true},
-          {key: 'subject', label: 'Субъект', sortable: true},
-          {key: 'created_at', label: 'Создан', sortable: true}
+          {key: 'name', label: 'Наименование города', sortable: true},
         ],
         filters: {
           name: '',
-          email: '',
-          phone_mobile: '',
-          subject: '',
-          created_at: ''
         }
       }
     },
@@ -115,18 +101,15 @@
         }
       },
       refresh() {
-        this.$store.dispatch('members/getMembersDataInStorage').catch(error => { console.log(error) })
+        this.$store.dispatch('citys/getCitysDataInStorage').catch(error => { console.log(error) })
       }
     },
     computed: {
       ...mapGetters({
-        items: 'members/getMembers'
+        items: 'citys/getCitys'
       }),
       filtered () {
-        let subject = {0: "Физическое лицо", 1: "Юридическое лицо"}
         const filtered = this.items.filter(item => {
-          item.name = (item.lastname + " " + item.firstname + " " + item.secondname).trim()
-          item.subject = subject[item.entity]
           return Object.keys(this.filters).every(key =>
             String(item[key]).includes(this.filters[key]))
         })
@@ -151,7 +134,7 @@
       }
     },
     mounted() {
-      this.$store.dispatch('members/getMembersDataInStorage').catch(error => { console.log(error) })
+      this.$store.dispatch('citys/getCitysDataInStorage').catch(error => { console.log(error) })
     }
   }
 </script>

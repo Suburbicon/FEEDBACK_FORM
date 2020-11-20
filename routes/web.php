@@ -1,4 +1,11 @@
 <?php
+Route::get('/test_index',  'ViewFormController@index');
+Route::get('/test_result',  'ViewFormController@result');
+
+Route::get('qr-code', function () {
+    return QrCode::encoding('UTF-8')->size(100)->generate('https://google.com');
+});
+
 Route::get('/{vue_capture?}', function () {
   App::setLocale('ru');
   return view('index');
@@ -42,3 +49,4 @@ Route::group(
 );
 
 Auth::routes(['register' => false]);
+
