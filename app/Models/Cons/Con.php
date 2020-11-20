@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Models\Citys;
+namespace App\Models\Cons;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class City extends Model {
+class Con extends Model {
 
-  protected $table = 'city';
+  protected $table = 'con';
   protected $guarded = [];
 
   static public function getData(){
-    return DB::table('city')->select("*")->orderBy('id', 'asc')->get();
+    return DB::table('con')->select("*")->orderBy('id', 'asc')->get();
   }
 
   static function Validate($request) {
@@ -21,13 +21,13 @@ class City extends Model {
   }
 
   static function Add($request) {
-    $city = Con::create([
+    $con = Con::create([
       'name' => mb_convert_case($request['name'], MB_CASE_TITLE),
     ]);
 
     return array(
-      'id' => $city['id'],
-      'name' => $city['id'],
+      'id' => $con['id'],
+      'name' => $con['id'],
     );
   }
 

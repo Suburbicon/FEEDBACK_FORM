@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Citys;
+namespace App\Http\Controllers\Cons;
 
-use App\Models\Citys\City;
+use App\Models\Cons\Con;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CityController extends Controller {
+class ConController extends Controller {
 
   function getData() {
     try {
-      $response = City::getData();
+      $response = Con::getData();
       return $this->successResponseSimple(200, $response);
     } catch (\DomainException $e) {
       return $this->errorResponse($e->getMessage(), 422);
@@ -19,8 +19,8 @@ class CityController extends Controller {
 
   function Add(Request $request) {
     try {
-        City::Validate($request);
-      $response = City::Add($request);
+      Con::Validate($request);
+      $response = Con::Add($request);
 
       return $this->successResponse(200, $response);
     } catch (\DomainException $e) {
@@ -30,8 +30,8 @@ class CityController extends Controller {
 
   function Edit(Request $request){
     try {
-      City::Validate($request);
-      $response = City::Edit($request);
+      Con::Validate($request);
+      $response = Con::Edit($request);
 
       return $this->successResponse(200 , $response);
     } catch (\DomainException $e) {

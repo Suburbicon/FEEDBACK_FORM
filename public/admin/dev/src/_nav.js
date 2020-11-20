@@ -42,7 +42,7 @@ export default {
     //   icon: 'icon-user'
     // },
     {
-      name: 'Города',
+      name: 'Список городов',
       url: '/city',
       icon: 'icon-compass'
     },

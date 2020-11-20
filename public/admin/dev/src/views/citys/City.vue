@@ -2,14 +2,14 @@
     <b-modal id="member-form" size="lg" hide-footer :title="titleForm[action]">
         <b-form @submit.stop.prevent="onSubmitModal">
             <b-col sm="4">
-                <b-form-group label-for="firstname" label="Наивенование города">
+                <b-form-group label-for="name" label="Наивенование города">
                     <b-form-input type="text"
-                                  id="firstname"
-                                  name="firstname"
+                                  id="name"
+                                  name="name"
                                   placeholder="Город"
                                   v-model="items.firstname"
                                   v-validate="{ required: true, min: 2, max: 20, alpha: true }"
-                                  :state="validateState('firstname')">
+                                  :state="validateState('name')">
                     </b-form-input>
                 </b-form-group>
             </b-col>
@@ -31,23 +31,12 @@ import axios from 'axios'
 let defaultField = function () {
     return {
         id: null,
-        lastname: '',
-        firstname: '',
-        secondname: '',
-
-        entity: null,
-        email: '',
-
-        phone_mobile: '',
-        phone_landline: '',
-        phone_landline_adt: '',
-
-        adt_info: ''
+        name: '',
     }
 }
 
 export default {
-    name: "Member",
+    name: "City",
     props: {
         action: String,
         items: {
@@ -66,10 +55,6 @@ export default {
                 "add": "Добавить",
                 "edit": "Сохранить"
             },
-            entity_list: [
-                {value: 0, text: 'Физическое лицо'},
-                {value: 1, text: 'Юридическое лицо'}
-            ]
         }
     },
     methods: {
@@ -82,7 +67,7 @@ export default {
 
         deleteEmptyData(data) {
             let result = {}
-            let member_fields = ["id", "lastname", "firstname", "secondname", "entity", "email", "phone_mobile", "phone_landline", "phone_landline_adt", "adt_info"]
+            let member_fields = ["id", "name"]
 
             for (let field in data) {
                 if (member_fields.indexOf(field) !== -1 && data[field] !== null && data[field] !== "") {
@@ -99,7 +84,7 @@ export default {
                     return
                 }
 
-                axios.post('/members/' + this.action + '/', this.deleteEmptyData(this.items))
+                axios.post('/city/' + this.action + '/', this.deleteEmptyData(this.items))
                     .then(response => {
                         let params = {
                             entity: response.data['result'].entity,
@@ -109,19 +94,18 @@ export default {
                             },
                             members_list: [{
                                 member_id: response.data['result'].member_id,
-                                name: response.data['result'].name,
-                                entity: response.data['result'].entity
+                                name: response.data['result'].name
                             }]
                         }
 
-                        this.$store.dispatch('orders/setMemberId', response.data['result'].member_id).catch(error => {
-                            console.log(error)
-                        })
-                        this.$store.dispatch('orders/setActiveSelect', params)
+                        // this.$store.dispatch('orders/setMemberId', response.data['result'].member_id).catch(error => {
+                        //     console.log(error)
+                        // })
+                        // this.$store.dispatch('orders/setActiveSelect', params)
 
                         this.items = defaultField()
                         this.$bvModal.hide('member-form')
-                        this.$store.dispatch('members/getMembersDataInStorage').catch(error => {
+                        this.$store.dispatch('citys/getCitysDataInStorage').catch(error => {
                             console.log(error)
                         })
                     })
