@@ -1,8 +1,8 @@
 <script>
-import { Doughnut } from 'vue-chartjs'
+import { HorizontalBar } from 'vue-chartjs'
 
 export default {
-  extends: Doughnut,
+  extends: HorizontalBar,
   mounted () {
     this.renderChart({
       labels: ['Новые', 'В обработке', 'В работе', 'Отклоненные'],

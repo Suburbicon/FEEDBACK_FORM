@@ -1,6 +1,6 @@
 <template>
     <b-card-group>
-        <b-card header="Города">
+        <b-card header="Список городов">
             <b-button size="sm" class="mar-top" :hidden="!button_hidden" variant="success" @click="showModal('add')"><i class="fa fa-plus"></i> Добавить</b-button>
             <b-button size="sm" class="mar-top" :hidden="button_hidden" variant="warning" @click="showModal('edit')"><i class="fa fa-edit"></i> Редактировать</b-button>
 
@@ -68,7 +68,7 @@
   import memberForm from './City'
 
   export default {
-    name: 'Members',
+    name: 'Citys',
     components: {memberForm},
     data: () => {
       return {
@@ -80,18 +80,18 @@
         totalRows: 0,
         perPage: 10,
         fields: [
-          {key: 'name', label: 'ФИО', sortable: true},
-          {key: 'email', label: 'Email', sortable: true},
+          {key: 'name', label: 'Наименование города', sortable: true},
+          /*{key: 'email', label: 'Email', sortable: true},
           {key: 'phone_mobile', label: 'Телефон', sortable: true},
           {key: 'subject', label: 'Субъект', sortable: true},
-          {key: 'created_at', label: 'Создан', sortable: true}
+          {key: 'created_at', label: 'Создан', sortable: true}*/
         ],
         filters: {
           name: '',
-          email: '',
+          /*email: '',
           phone_mobile: '',
           subject: '',
-          created_at: ''
+          created_at: ''*/
         }
       }
     },

@@ -1,0 +1,29 @@
+body{
+    line-height: 140%;
+    font-family: 'Rubik', sans-serif;
+}
+
+.container{
+    max-width: 768px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.thanks-review{
+    margin-top: 155px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.thanks-review__wrap{
+
+}
+
+.thanks-review__img{
+    max-width: 100%;
+}
+
+.thanks-review__title{
+
+}

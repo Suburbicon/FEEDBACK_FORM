@@ -32,7 +32,7 @@ export default {
     //   }]
     // },
     {
-      name: 'Заявки',
+      name: 'Обращения',
       url: '/orders',
       icon: 'icon-phone'
     },
@@ -44,7 +44,7 @@ export default {
     {
       name: 'Города',
       url: '/city',
-      icon: 'cfa fa-building-o'
+      icon: 'icon-compass'
     },
     // {
     //   name: 'Компании',
