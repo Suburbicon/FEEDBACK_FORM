@@ -12,26 +12,16 @@ use \SimpleSoftwareIO\QrCode\Facades\QrCode;
 class QrController extends Controller {
 
 
-    public function QrGenerated() {
+    public function QrGenerated($params) {
         try {
-            $params = [
-                "id_city" => '1',
-                "id_department" => '1',
-                "id_sector" => '1'
-            ];
-//            $qr = QrCode::encoding('UTF-8')->size(100)->generate();
-            $image = QrCode::format('png');
-//                ->generate('https://vk.com?id_city='.$params['id_city'].'&id_department='.$params['id_department'].'&id_sector='.$params['id_sector']);
+            $gen_link = 'https://vk.com?id_city='.$params['id_city'].'&id_department='.$params['id_department'].'&id_sector='.$params['id_sector'];
 
-//            $image = QrCode::format('png')->merge('https://www.w3adda.com/wp-content/uploads/2019/07/laravel.png', 0.3, true)
-//                ->size(200)->errorCorrection('H')
-//                ->generate('W3Adda Laravel Tutorial');
-            dd($image);
-            $output_file = 'img-' . time() . '.png';
-//            dd($output_file);
-            Storage::disk('public')->put($output_file, $image);
-//            dd($qr);
-//            return $this->successResponseSimple(200, $response);
+            QrCode::size(500)
+                ->format('svg')
+                ->generate($gen_link, storage_path('app/public/qrcodes/'.time().'.svg'));
+
+//            dd('/storage/app/public/qrcodes/'.time().'.svg');
+            return '/storage/app/public/qrcodes/'.time().'.svg';
         } catch (\DomainException $e) {
             return $this->errorResponse($e->getMessage(), 422);
         }
