@@ -27,7 +27,7 @@ class City extends Model {
 
     return array(
       'id' => $city['id'],
-      'name' => $city['id'],
+      'name' => $city['name'],
     );
   }
 
