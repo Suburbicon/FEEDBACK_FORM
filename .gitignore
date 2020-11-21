@@ -3,6 +3,7 @@
 /public/admin/compiled
 /public/storage
 /storage/*.key
+/resources/views/index.blade.php
 /vendor
 .env
 .phpunit.result.cache
