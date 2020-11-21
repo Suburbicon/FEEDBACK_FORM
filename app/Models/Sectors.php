@@ -56,6 +56,8 @@ class Sectors extends Model
         Sectors::where('id', $request['id'])->update([
             'path_to_qr' => $path_to_qr
         ]);
+
+        return $path_to_qr;
     }
 
 //  static function Edit($request){
