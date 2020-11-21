@@ -1,44 +1,47 @@
 <?php
 
-namespace App\Models\Departaments;
+namespace App\Models\Departments;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Departament extends Model
+class Department extends Model
 {
 
-    protected $table = 'con';
+    protected $table = 'departments';
     protected $guarded = [];
 
     static public function getData()
     {
-        return DB::table('con')->select("*")->orderBy('id', 'asc')->get();
+        return DB::table('departments')->select("*")->orderBy('id', 'asc')->get();
     }
 
     static function Validate($request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'id_city' => 'required|string|max:255',
         ]);
     }
 
     static function Add($request)
     {
-        $con = Departament::create([
-            'name' => mb_convert_case($request['name'], MB_CASE_TITLE),
+        $department = Department::create([
+            'name' => $request['name'],
+            'id_city' => $request['id_city'],
         ]);
 
         return array(
-            'id' => $con['id'],
-            'name' => $con['id'],
+            'id' => $department['id'],
+            'name' => $department['id'],
+            'id_city' => $department['id_city'],
         );
     }
 
     static function Edit($request)
     {
-        Departament::where('id', $request['id'])->update([
-            'name' => mb_convert_case($request['name'], MB_CASE_TITLE),
+        Department::where('id', $request['id'])->update([
+            'name' => $request['name']
         ]);
 
         return array(

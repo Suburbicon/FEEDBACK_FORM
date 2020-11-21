@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Departaments;
+namespace App\Http\Controllers\Departments;
 
-use App\Models\Departaments\Departament;
+use App\Models\Departments\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DepartamentController extends Controller {
+class DepartmentController extends Controller {
 
   function getData() {
     try {
-      $response = Departament::getData();
+      $response = Department::getData();
       return $this->successResponseSimple(200, $response);
     } catch (\DomainException $e) {
       return $this->errorResponse($e->getMessage(), 422);
@@ -19,8 +19,8 @@ class DepartamentController extends Controller {
 
   function Add(Request $request) {
     try {
-      Departament::Validate($request);
-      $response = Departament::Add($request);
+      Department::Validate($request);
+      $response = Department::Add($request);
 
       return $this->successResponse(200, $response);
     } catch (\DomainException $e) {
@@ -30,8 +30,8 @@ class DepartamentController extends Controller {
 
   function Edit(Request $request){
     try {
-        Departament::Validate($request);
-      $response = Departament::Edit($request);
+      Department::Validate($request);
+      $response = Department::Edit($request);
 
       return $this->successResponse(200 , $response);
     } catch (\DomainException $e) {
