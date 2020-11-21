@@ -6,6 +6,7 @@ import config from './modules/config'
 import orders from './modules/orders'
 import members from './modules/members'
 import citys from './modules/citys'
+import appeals from './modules/appeals'
 import companies from './modules/companies'
 
 Vue.use(Vuex)
@@ -17,6 +18,7 @@ export default new Vuex.Store({
     orders,
     members,
     citys,
+    appeals,
     companies
   }
 })

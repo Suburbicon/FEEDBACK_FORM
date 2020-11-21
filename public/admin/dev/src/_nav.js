@@ -33,7 +33,7 @@ export default {
     // },
     {
       name: 'Обращения',
-      url: '/orders',
+      url: '/appeals',
       icon: 'icon-phone'
     },
     // {

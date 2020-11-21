@@ -7,7 +7,7 @@ use App\Models\Appeals;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AppealController
+class AppealController extends Controller
 {
     function getData() {
         try {
