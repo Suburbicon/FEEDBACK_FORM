@@ -64,11 +64,12 @@ $(document).ready(function () {
             // data: $("#"+ajax_form).serialize(),
             success: function(response) {
                 var id = response.id;
-                console.log(response);
-
-                if(id.length){
-                    window.location = "/test_result"
-                }
+                window.location = "/test_result"
+                // console.log(response);
+                //
+                // if(id.length){
+                //     window.location = "/test_result"
+                // }
 
                 // if(message == 'pass_error'){
                 //     console.log(response);
