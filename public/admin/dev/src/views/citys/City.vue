@@ -7,7 +7,7 @@
                                   id="name"
                                   name="name"
                                   placeholder="Город"
-                                  v-model="items.firstname"
+                                  v-model="items.name"
                                   v-validate="{ required: true, min: 2, max: 20, alpha: true }"
                                   :state="validateState('name')">
                     </b-form-input>
@@ -37,20 +37,35 @@ let defaultField = function () {
 
 export default {
     name: "City",
+
     props: {
         action: String,
+        cityName: {
+            default: '',
+            type: String,
+        },
+        id: Number,
+
         items: {
             type: Object,
-            default: defaultField
+            default: {
+                id: null,
+                name: '',
+            }
         }
     },
+
     data() {
         return {
+            url: null,
+
             defaultFields: null,
+
             titleForm: {
                 "add": "Добавление города в административную панель",
                 "edit": "Редактирование города",
             },
+
             textButton: {
                 "add": "Добавить",
                 "edit": "Сохранить"
@@ -84,30 +99,22 @@ export default {
                     return
                 }
 
-                axios.post('/city/' + this.action + '/', this.deleteEmptyData(this.items))
-                    .then(response => {
-                        let params = {
-                            entity: response.data['result'].entity,
-                            selected_member: {
-                                member_id: response.data['result'].member_id,
-                                name: response.data['result'].name
-                            },
-                            members_list: [{
-                                member_id: response.data['result'].member_id,
-                                name: response.data['result'].name
-                            }]
-                        }
+                if (this.action === 'add') {
+                    this.url = `/city/${this.action}?name=${this.items.name}`;
+                } else if (this.action === 'edit') {
+                    this.url = `/city/${this.action}?id=${this.items.id}&name=${this.items.name}`;
+                }
 
-                        // this.$store.dispatch('orders/setMemberId', response.data['result'].member_id).catch(error => {
-                        //     console.log(error)
-                        // })
-                        // this.$store.dispatch('orders/setActiveSelect', params)
+                axios.post(this.url)
+                    .then(response => {
+                        console.log(response);
 
                         this.items = defaultField()
                         this.$bvModal.hide('member-form')
-                        this.$store.dispatch('citys/getCitysDataInStorage').catch(error => {
-                            console.log(error)
-                        })
+                        this.$store.dispatch('citys/getCitysDataInStorage')
+                            .catch(error => {
+                                console.log(error)
+                            })
                     })
                     .catch(error => {
                         console.log(error)

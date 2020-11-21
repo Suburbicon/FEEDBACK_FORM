@@ -2,9 +2,11 @@ import axios from 'axios'
 
 export default {
     namespaced: true,
+
     state: {
         items: []
     },
+
     actions: {
         getCitysDataInStorage({commit}) {
             return new Promise((resolve, reject) => {
@@ -19,11 +21,13 @@ export default {
             })
         },
     },
+
     mutations: {
         setCityData(state, items) {
             state.items = items
         }
     },
+
     getters: {
         getCitys: state => { return state.items }
     }
