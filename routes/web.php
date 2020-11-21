@@ -47,6 +47,10 @@ Route::group(
     Route::post('/city/add/', 'Citys\CityController@Add');
     Route::post('/city/edit/', 'Citys\CityController@Edit');
 
+    Route::post('/appeals/get/', 'Appeals\AppealController@getData');
+//    Route::post('/city/add/', 'Citys\CityController@Add');
+//    Route::post('/city/edit/', 'Citys\CityController@Edit');
+
     Route::post('/config/get/', 'ConfigController@getAllConfig');
   }
 );

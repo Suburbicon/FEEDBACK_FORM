@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.js"
             integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('form/js/jquery.star-rating-svg.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('form/js/jquery-3.2.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('form/js/main.js') }}"></script>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/svg">
     <title>Форма обращения</title>
@@ -19,12 +20,12 @@
 <section class="review container">
     <h2 class="review__title">Оставьте обращение</h2>
 
-    <form action="/form_post" class="review__wrap">
+    <form class="review__wrap">
         <h2 class="review__subtitle">Опишите проблему с которой Вы сталкнулись</h2>
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="text" hidden value="1" name="id_city">
-        <input type="text" hidden value="2" name="id_department">
-        <input type="text" hidden value="3" name="id_sector">
+        <input type="hidden" name="_token" class="token_js" value="{{ csrf_token() }}">
+{{--        <input type="text" hidden value="1" name="id_city">--}}
+{{--        <input type="text" hidden value="2" name="id_department">--}}
+{{--        <input type="text" hidden value="3" name="id_sector">--}}
 
 {{--        <div class="review__stars">
             <input type="radio" name="rating" value="5" id="rating_5" class="review__input-star">
@@ -39,10 +40,10 @@
             <label for="rating_1" class="review__label-star"></label>
         </div>--}}
         <div class="review__input-text">
-            <textarea name="info" type="text" class="review__input" placeholder="Опишите, проблему ..."></textarea>
+            <textarea name="info" type="text" class="review__input" id="info" placeholder="Опишите, проблему ..."></textarea>
 {{--            <textarea type="text" class="review__input" placeholder="Напишите, что вам не понравилось..."></textarea>--}}
         </div>
-        <button class="review__button">Отправить обращение</button>
+        <button class="review__button form_post_js">Отправить обращение</button>
     </form>
 </section>
 </body>

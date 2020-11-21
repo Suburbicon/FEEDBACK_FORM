@@ -30,8 +30,8 @@ class ViewFormController extends Controller {
             Appeals::Validate($request);
             $response = Appeals::Add($request);
 
-            return view('form.result', $response);
-//            return $this->successResponseSimple(200, $response);
+//            return view('form.result', $response);
+            return $this->successResponseSimple(200, $response);
         } catch (\DomainException $e) {
             return $this->errorResponse($e->getMessage(), 422);
         }
