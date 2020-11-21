@@ -2,6 +2,9 @@
 Route::get('/test_index',  'ViewFormController@index');
 Route::get('/test_result',  'ViewFormController@result');
 
+Route::get('/form_post',  'ViewFormController@Add');
+
+
 Route::get('qr-code', function () {
     return QrCode::encoding('UTF-8')->size(100)->generate('https://google.com');
 });

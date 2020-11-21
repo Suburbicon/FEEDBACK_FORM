@@ -19,10 +19,14 @@
 <section class="review container">
     <h2 class="review__title">Оставьте обращение</h2>
 
-    <form action="/test_result" class="review__wrap">
+    <form action="/form_post" class="review__wrap">
         <h2 class="review__subtitle">Опишите проблему с которой Вы сталкнулись</h2>
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="text" hidden value="1" name="id_city">
+        <input type="text" hidden value="2" name="id_department">
+        <input type="text" hidden value="3" name="id_sector">
 
-        <div class="review__stars">
+{{--        <div class="review__stars">
             <input type="radio" name="rating" value="5" id="rating_5" class="review__input-star">
             <label for="rating_5" class="review__label-star"></label>
             <input type="radio" name="rating" value="4" id="rating_4" class="review__input-star">
@@ -33,9 +37,9 @@
             <label for="rating_2" class="review__label-star"></label>
             <input type="radio" name="rating" value="1" id="rating_1" class="review__input-star">
             <label for="rating_1" class="review__label-star"></label>
-        </div>
+        </div>--}}
         <div class="review__input-text">
-            <textarea type="text" class="review__input" placeholder="Напишите, что вам понравилось..."></textarea>
+            <textarea name="info" type="text" class="review__input" placeholder="Опишите, проблему ..."></textarea>
 {{--            <textarea type="text" class="review__input" placeholder="Напишите, что вам не понравилось..."></textarea>--}}
         </div>
         <button class="review__button">Отправить обращение</button>
