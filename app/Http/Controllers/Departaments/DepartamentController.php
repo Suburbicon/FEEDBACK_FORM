@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Cons;
+namespace App\Http\Controllers\Departaments;
 
-use App\Models\Cons\Con;
+use App\Models\Departaments\Departament;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ConController extends Controller {
+class DepartamentController extends Controller {
 
   function getData() {
     try {
-      $response = Con::getData();
+      $response = Departament::getData();
       return $this->successResponseSimple(200, $response);
     } catch (\DomainException $e) {
       return $this->errorResponse($e->getMessage(), 422);
@@ -19,8 +19,8 @@ class ConController extends Controller {
 
   function Add(Request $request) {
     try {
-      Con::Validate($request);
-      $response = Con::Add($request);
+      Departament::Validate($request);
+      $response = Departament::Add($request);
 
       return $this->successResponse(200, $response);
     } catch (\DomainException $e) {
@@ -30,8 +30,8 @@ class ConController extends Controller {
 
   function Edit(Request $request){
     try {
-      Con::Validate($request);
-      $response = Con::Edit($request);
+        Departament::Validate($request);
+      $response = Departament::Edit($request);
 
       return $this->successResponse(200 , $response);
     } catch (\DomainException $e) {

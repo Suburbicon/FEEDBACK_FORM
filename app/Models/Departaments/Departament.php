@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Cons;
+namespace App\Models\Departaments;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Con extends Model
+class Departament extends Model
 {
 
     protected $table = 'con';
@@ -25,7 +25,7 @@ class Con extends Model
 
     static function Add($request)
     {
-        $con = Con::create([
+        $con = Departament::create([
             'name' => mb_convert_case($request['name'], MB_CASE_TITLE),
         ]);
 
@@ -37,7 +37,7 @@ class Con extends Model
 
     static function Edit($request)
     {
-        Con::where('id', $request['id'])->update([
+        Departament::where('id', $request['id'])->update([
             'name' => mb_convert_case($request['name'], MB_CASE_TITLE),
         ]);
 
