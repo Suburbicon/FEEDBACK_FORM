@@ -21,7 +21,7 @@ class City extends Model {
   }
 
   static function Add($request) {
-    $city = Con::create([
+    $city = City::create([
       'name' => mb_convert_case($request['name'], MB_CASE_TITLE),
     ]);
 
@@ -32,7 +32,7 @@ class City extends Model {
   }
 
   static function Edit($request){
-    Con::where('id', $request['id'])->update([
+      City::where('id', $request['id'])->update([
       'name' => mb_convert_case($request['name'], MB_CASE_TITLE),
     ]);
 
