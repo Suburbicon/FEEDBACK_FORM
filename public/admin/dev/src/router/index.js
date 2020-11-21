@@ -93,6 +93,11 @@ export default new Router({
                     component: () => import('../views/appeals/Appeals')
                 },
                 {
+                    path: 'departments',
+                    name: 'Список ЦОНов',
+                    component: () => import('../views/departments/Departments')
+                },
+                {
                     path: 'companies',
                     name: 'Компании',
                     component: () => import('../views/companies/Companies')

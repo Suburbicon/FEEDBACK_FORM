@@ -51,6 +51,10 @@ Route::group(
 //    Route::post('/city/add/', 'Citys\CityController@Add');
 //    Route::post('/city/edit/', 'Citys\CityController@Edit');
 
+    Route::post('/departments/get/', 'Departments\DepartmentController@getData');
+    Route::post('/departments/add/', 'Departments\DepartmentController@Add');
+    Route::post('/departments/edit/', 'Departments\DepartmentController@Edit');
+
     Route::post('/config/get/', 'ConfigController@getAllConfig');
   }
 );

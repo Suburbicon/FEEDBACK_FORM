@@ -33,7 +33,7 @@ class Department extends Model
 
         return array(
             'id' => $department['id'],
-            'name' => $department['id'],
+            'name' => $department['name'],
             'id_city' => $department['id_city'],
         );
     }
@@ -41,7 +41,8 @@ class Department extends Model
     static function Edit($request)
     {
         Department::where('id', $request['id'])->update([
-            'name' => $request['name']
+            'name' => $request['name'],
+            'id_city' => $request['id_city'],
         ]);
 
         return array(
