@@ -18,7 +18,7 @@ class SectorsCreateTable extends Migration
             $table->string('id_city', 255);
             $table->string('id_department', 255);
             $table->string('name', 255);
-            $table->string('path_to_qr', 255);
+            $table->string('path_to_qr', 255)->nullable();
             $table->timestamps();
         });
     }
