@@ -21,7 +21,6 @@ class Sectors extends Model
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'id_city' => 'required|string|max:255',
             'id_department' => 'required|string|max:255',
         ]);
     }
@@ -30,14 +29,12 @@ class Sectors extends Model
     {
         $sectors = Sectors::create([
             'name' => $request['name'],
-            'id_city' => $request['id_city'],
             'id_department' => $request['id_department'],
         ]);
 
         return array(
             'id' => $sectors['id'],
             'name' => $sectors['name'],
-            'id_city' => $sectors['id_city'],
             'id_department' => $sectors['id_department'],
         );
     }
@@ -58,15 +55,17 @@ class Sectors extends Model
         ]);
     }
 
-//  static function Edit($request){
-//      Appeals::where('id', $request['id'])->update([
-//      'name' => mb_convert_case($request['name'], MB_CASE_TITLE),
-//    ]);
-//
-//    return array(
-//      "success" => true
-//    );
-//  }
+    static function Edit($request)
+    {
+        Sectors::where('id', $request['id'])->update([
+            'name' => $request['name'],
+            'id_department' => $request['id_department'],
+        ]);
+
+        return array(
+            "success" => true
+        );
+    }
 
     /*   static function setRelationshipMemberToCompany($member_id, $company_id){
         if ($company_id && $member_id && !self::isCompanyMemberMappingExist($member_id, $company_id)){
