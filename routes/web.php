@@ -43,7 +43,7 @@ Route::group(
         Route::post('/members/search/', 'Members\MemberController@Search');
         Route::post('/members/connecttocompany/', 'Members\MemberController@setRelationshipToCompany');
 
-        Route::post('/city/get/', 'Citys\CityController@getData');
+        Route::any('/city/get/', 'Citys\CityController@getData');
         Route::post('/city/add/', 'Citys\CityController@Add');
         Route::post('/city/edit/', 'Citys\CityController@Edit');
 
