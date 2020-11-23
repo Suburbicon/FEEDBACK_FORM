@@ -54,7 +54,7 @@ export default {
     {
       name: 'Список секторов',
       url: '/sectors',
-      icon: 'bookmark'
+      icon: 'icon-tag'
     },
     // {
     //   name: 'Компании',
