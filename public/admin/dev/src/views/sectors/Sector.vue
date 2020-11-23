@@ -1,20 +1,20 @@
 <template>
     <b-modal id="member-form" size="lg" hide-footer :title="titleForm[action]">
         <b-form @submit.stop.prevent="onSubmitModal">
-            <b-col sm="4">
-                <b-form-group label-for="name" label="Наименование города">
+            <b-col sm="12">
+                <b-form-group label-for="name" label="Наименование сектора">
                     <b-form-input type="text"
                                   id="name"
                                   name="name"
-                                  placeholder="ЦОН"
+                                  placeholder="Наименование сектора"
                                   v-model="items.name"
-                                  v-validate="{ required: true, min: 2, max: 40, alpha: true }"
+                                  v-validate="{ required: true, min: 2, max: 70 }"
                                   :state="validateState('name')">
                     </b-form-input>
                 </b-form-group>
-                <b-form-group label-for="city" label="Город">
-                    <b-form-select v-model="items.id_city"
-                                   :options="cities"
+                <b-form-group label-for="city" label="Наименование ЦОНа">
+                    <b-form-select v-model="items.id_department"
+                                   :options="departments"
                                    value-field="id"
                                    text-field="name"
                     >
@@ -40,6 +40,7 @@ let defaultField = function () {
     return {
         id: null,
         name: '',
+        id_department: 1
     }
 }
 
@@ -49,18 +50,14 @@ export default {
     props: {
         action: String,
         citySelectValue: 1,
-        cityName: {
-            default: '',
-            type: String,
-        },
-        id: Number,
 
+        id: Number,
         items: {
             type: Object,
             default: {
                 id: null,
                 name: '',
-                id_city: 1
+                id_department: 1
             }
         }
     },
@@ -72,8 +69,8 @@ export default {
             defaultFields: null,
 
             titleForm: {
-                "add": "Добавление города в административную панель",
-                "edit": "Редактирование города",
+                "add": "Добавление сектора в административную панель",
+                "edit": "Редактирование сектора",
             },
 
             textButton: {
@@ -84,9 +81,8 @@ export default {
     },
 
     computed: {
-        cities () {
-            console.log(this.$store.getters['citys/getCitys'])
-            return this.$store.getters['citys/getCitys']
+        departments () {
+            return this.$store.getters['departments/getDepartments']
         },
     },
 
@@ -117,10 +113,14 @@ export default {
                     return
                 }
 
+                console.log('this.items.id_department: ', this.items.id_department)
+                let currentDepartment = this.departments.filter(item => item.id === +this.items.id_department);
+                console.log('asdasa: ', currentDepartment)
+
                 if (this.action === 'add') {
-                    this.url = `/departments/${this.action}?id_city=${this.items.id_city}&name=${this.items.name}`;
+                    this.url = `/sectors/${this.action}?id_department=${this.items.id_department}&id_city=${currentDepartment[0].id_city}&name=${this.items.name}`;
                 } else if (this.action === 'edit') {
-                    this.url = `/departments/${this.action}?id=${this.items.id}&name=${this.items.name}&id_city=${this.items.id_city}`;
+                    this.url = `/sectors/${this.action}?id=${this.items.id}&id_department=${this.items.id_department}&id_city=${currentDepartment[0].id_city}&name=${this.items.name}`;
                 }
 
                 console.log(this.url);
@@ -131,7 +131,7 @@ export default {
 
                         this.items = defaultField()
                         this.$bvModal.hide('member-form')
-                        this.$store.dispatch('departments/getDepartments')
+                        this.$store.dispatch('sectors/getSectorsData')
                     })
                     .catch(error => {
                         console.log(error)
