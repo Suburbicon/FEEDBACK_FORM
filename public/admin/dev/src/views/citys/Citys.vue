@@ -121,6 +121,7 @@ export default {
         }),
 
         filtered() {
+            console.log(this.items);
             const filtered = this.items.filter(item => {
                 return Object.keys(this.filters).every(key =>
                     String(item[key]).includes(this.filters[key]))
