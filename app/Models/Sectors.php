@@ -21,6 +21,7 @@ class Sectors extends Model
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'id_city' => 'required|string|max:255',
             'id_department' => 'required|string|max:255',
         ]);
     }
@@ -29,12 +30,14 @@ class Sectors extends Model
     {
         $sectors = Sectors::create([
             'name' => $request['name'],
+            'id_city' => $request['id_city'],
             'id_department' => $request['id_department'],
         ]);
 
         return array(
             'id' => $sectors['id'],
             'name' => $sectors['name'],
+            'id_city' => $sectors['id_city'],
             'id_department' => $sectors['id_department'],
         );
     }
