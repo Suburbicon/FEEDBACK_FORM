@@ -10,7 +10,7 @@ export default {
     actions: {
         getCitysDataInStorage({commit}) {
             return new Promise((resolve, reject) => {
-                axios.post('/city/get/')
+                axios.post('/city/get')
                 .then(response => {
                     commit('setCityData', response.data)
                     resolve(response.data)
