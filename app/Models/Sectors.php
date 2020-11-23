@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\QrController;
 
 class Sectors extends Model
@@ -57,7 +58,9 @@ class Sectors extends Model
             'path_to_qr' => $path_to_qr
         ]);
 
-        return $path_to_qr;
+        $url = Storage::url($path_to_qr);
+
+        return $url;
     }
 
     static function Edit($request)
