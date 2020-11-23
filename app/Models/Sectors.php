@@ -65,6 +65,7 @@ class Sectors extends Model
         Sectors::where('id', $request['id'])->update([
             'name' => $request['name'],
             'id_department' => $request['id_department'],
+            'id_city' => $request['id_city'],
         ]);
 
         return array(

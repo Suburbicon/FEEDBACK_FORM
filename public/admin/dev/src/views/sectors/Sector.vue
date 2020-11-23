@@ -1,16 +1,24 @@
 <template>
     <b-modal id="member-form" size="lg" hide-footer :title="titleForm[action]">
         <b-form @submit.stop.prevent="onSubmitModal">
-            <b-col sm="4">
-                <b-form-group label-for="name" label="Наивенование города">
+            <b-col sm="12">
+                <b-form-group label-for="name" label="Наименование сектора">
                     <b-form-input type="text"
                                   id="name"
                                   name="name"
-                                  placeholder="Город"
+                                  placeholder="Наименование сектора"
                                   v-model="items.name"
-                                  v-validate="{ required: true, min: 2, max: 20 }"
+                                  v-validate="{ required: true, min: 2, max: 70 }"
                                   :state="validateState('name')">
                     </b-form-input>
+                </b-form-group>
+                <b-form-group label-for="city" label="Наименование ЦОНа">
+                    <b-form-select v-model="items.id_department"
+                                   :options="departments"
+                                   value-field="id"
+                                   text-field="name"
+                    >
+                    </b-form-select>
                 </b-form-group>
             </b-col>
             <div slot="footer">
@@ -32,25 +40,24 @@ let defaultField = function () {
     return {
         id: null,
         name: '',
+        id_department: 1
     }
 }
 
 export default {
-    name: "City",
+    name: "Department",
 
     props: {
         action: String,
-        cityName: {
-            default: '',
-            type: String,
-        },
-        id: Number,
+        citySelectValue: 1,
 
+        id: Number,
         items: {
             type: Object,
             default: {
                 id: null,
                 name: '',
+                id_department: 1
             }
         }
     },
@@ -62,8 +69,8 @@ export default {
             defaultFields: null,
 
             titleForm: {
-                "add": "Добавление города в административную панель",
-                "edit": "Редактирование города",
+                "add": "Добавление сектора в административную панель",
+                "edit": "Редактирование сектора",
             },
 
             textButton: {
@@ -72,6 +79,13 @@ export default {
             },
         }
     },
+
+    computed: {
+        departments () {
+            return this.$store.getters['departments/getDepartments']
+        },
+    },
+
     methods: {
         validateState(ref) {
             if (this.veeFields[ref] && (this.veeFields[ref].dirty || this.veeFields[ref].validated) && !(this.veeFields[ref].required === false && this[ref] === '')) {
@@ -99,11 +113,17 @@ export default {
                     return
                 }
 
+                console.log('this.items.id_department: ', this.items.id_department)
+                let currentDepartment = this.departments.filter(item => item.id === +this.items.id_department);
+                console.log('asdasa: ', currentDepartment)
+
                 if (this.action === 'add') {
-                    this.url = `/city/${this.action}?name=${this.items.name}`;
+                    this.url = `/sectors/${this.action}?id_department=${this.items.id_department}&id_city=${currentDepartment[0].id_city}&name=${this.items.name}`;
                 } else if (this.action === 'edit') {
-                    this.url = `/city/${this.action}?id=${this.items.id}&name=${this.items.name}`;
+                    this.url = `/sectors/${this.action}?id=${this.items.id}&id_department=${this.items.id_department}&id_city=${currentDepartment[0].id_city}&name=${this.items.name}`;
                 }
+
+                console.log(this.url);
 
                 axios.post(this.url)
                     .then(response => {
@@ -111,10 +131,7 @@ export default {
 
                         this.items = defaultField()
                         this.$bvModal.hide('member-form')
-                        this.$store.dispatch('citys/getCitysDataInStorage')
-                            .catch(error => {
-                                console.log(error)
-                            })
+                        this.$store.dispatch('sectors/getSectorsData')
                     })
                     .catch(error => {
                         console.log(error)

@@ -55,6 +55,10 @@ Route::group(
     Route::post('/departments/add/', 'Departments\DepartmentController@Add');
     Route::post('/departments/edit/', 'Departments\DepartmentController@Edit');
 
+    Route::post('/sectors/get/', 'Sectors\SectorController@getData');
+    Route::post('/sectors/add/', 'Sectors\SectorController@Add');
+    Route::post('/sectors/edit/', 'Sectors\SectorController@Edit');
+
     Route::post('/config/get/', 'ConfigController@getAllConfig');
   }
 );
