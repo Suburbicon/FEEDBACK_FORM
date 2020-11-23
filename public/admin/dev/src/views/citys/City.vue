@@ -6,7 +6,7 @@
                     <b-form-input type="text"
                                   id="name"
                                   name="name"
-                                  placeholder="Город"
+                                  placeholder="Введите название"
                                   v-model="items.name"
                                   v-validate="{ required: true, min: 2, max: 20 }"
                                   :state="validateState('name')">

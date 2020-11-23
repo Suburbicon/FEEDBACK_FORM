@@ -6,13 +6,13 @@
                     <b-form-input type="text"
                                   id="name"
                                   name="name"
-                                  placeholder="Наименование ЦОНа"
+                                  placeholder="Введите название"
                                   v-model="items.name"
                                   v-validate="{ required: true, min: 2, max: 40}"
                                   :state="validateState('name')">
                     </b-form-input>
                 </b-form-group>
-                <b-form-group label-for="city" label="Наименование города">
+                <b-form-group label-for="city" label="Место нахождения ЦОНа">
                     <b-form-select v-model="items.id_city"
                                    :options="cities"
                                    value-field="id"
@@ -72,8 +72,8 @@ export default {
             defaultFields: null,
 
             titleForm: {
-                "add": "Добавление города в административную панель",
-                "edit": "Редактирование города",
+                "add": "Добавление ЦОНа в административную панель",
+                "edit": "Редактирование ЦОНа",
             },
 
             textButton: {

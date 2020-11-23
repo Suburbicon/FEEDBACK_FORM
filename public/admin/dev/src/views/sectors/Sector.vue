@@ -6,13 +6,13 @@
                     <b-form-input type="text"
                                   id="name"
                                   name="name"
-                                  placeholder="Наименование сектора"
+                                  placeholder="Введите название"
                                   v-model="items.name"
                                   v-validate="{ required: true, min: 2, max: 70 }"
                                   :state="validateState('name')">
                     </b-form-input>
                 </b-form-group>
-                <b-form-group label-for="city" label="Наименование ЦОНа">
+                <b-form-group label-for="city" label="ЦОН относящийся к сектору">
                     <b-form-select v-model="items.id_department"
                                    :options="departments"
                                    value-field="id"
