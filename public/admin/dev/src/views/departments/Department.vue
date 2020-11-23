@@ -2,17 +2,17 @@
     <b-modal id="member-form" size="lg" hide-footer :title="titleForm[action]">
         <b-form @submit.stop.prevent="onSubmitModal">
             <b-col sm="4">
-                <b-form-group label-for="name" label="Наименование города">
+                <b-form-group label-for="name" label="Наименование ЦОНа">
                     <b-form-input type="text"
                                   id="name"
                                   name="name"
-                                  placeholder="ЦОН"
+                                  placeholder="Наименование ЦОНа"
                                   v-model="items.name"
-                                  v-validate="{ required: true, min: 2, max: 40, alpha: true }"
+                                  v-validate="{ required: true, min: 2, max: 40}"
                                   :state="validateState('name')">
                     </b-form-input>
                 </b-form-group>
-                <b-form-group label-for="city" label="Город">
+                <b-form-group label-for="city" label="Наименование города">
                     <b-form-select v-model="items.id_city"
                                    :options="cities"
                                    value-field="id"
@@ -60,7 +60,7 @@ export default {
             default: {
                 id: null,
                 name: '',
-                id_city: 1
+                id_city: '1'
             }
         }
     },

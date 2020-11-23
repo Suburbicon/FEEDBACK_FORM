@@ -2,15 +2,23 @@
     <b-modal id="member-form" size="lg" hide-footer :title="titleForm[action]">
         <b-form @submit.stop.prevent="onSubmitModal">
             <b-col sm="4">
-                <b-form-group label-for="name" label="Наивенование города">
+                <b-form-group label-for="name" label="Наименование города">
                     <b-form-input type="text"
                                   id="name"
                                   name="name"
-                                  placeholder="Город"
+                                  placeholder="ЦОН"
                                   v-model="items.name"
-                                  v-validate="{ required: true, min: 2, max: 20 }"
+                                  v-validate="{ required: true, min: 2, max: 40, alpha: true }"
                                   :state="validateState('name')">
                     </b-form-input>
+                </b-form-group>
+                <b-form-group label-for="city" label="Город">
+                    <b-form-select v-model="items.id_city"
+                                   :options="cities"
+                                   value-field="id"
+                                   text-field="name"
+                    >
+                    </b-form-select>
                 </b-form-group>
             </b-col>
             <div slot="footer">
@@ -36,10 +44,11 @@ let defaultField = function () {
 }
 
 export default {
-    name: "City",
+    name: "Department",
 
     props: {
         action: String,
+        citySelectValue: 1,
         cityName: {
             default: '',
             type: String,
@@ -51,6 +60,7 @@ export default {
             default: {
                 id: null,
                 name: '',
+                id_city: 1
             }
         }
     },
@@ -72,6 +82,14 @@ export default {
             },
         }
     },
+
+    computed: {
+        cities () {
+            console.log(this.$store.getters['citys/getCitys'])
+            return this.$store.getters['citys/getCitys']
+        },
+    },
+
     methods: {
         validateState(ref) {
             if (this.veeFields[ref] && (this.veeFields[ref].dirty || this.veeFields[ref].validated) && !(this.veeFields[ref].required === false && this[ref] === '')) {
@@ -100,10 +118,12 @@ export default {
                 }
 
                 if (this.action === 'add') {
-                    this.url = `/city/${this.action}?name=${this.items.name}`;
+                    this.url = `/departments/${this.action}?id_city=${this.items.id_city}&name=${this.items.name}`;
                 } else if (this.action === 'edit') {
-                    this.url = `/city/${this.action}?id=${this.items.id}&name=${this.items.name}`;
+                    this.url = `/departments/${this.action}?id=${this.items.id}&name=${this.items.name}&id_city=${this.items.id_city}`;
                 }
+
+                console.log(this.url);
 
                 axios.post(this.url)
                     .then(response => {
@@ -111,10 +131,7 @@ export default {
 
                         this.items = defaultField()
                         this.$bvModal.hide('member-form')
-                        this.$store.dispatch('citys/getCitysDataInStorage')
-                            .catch(error => {
-                                console.log(error)
-                            })
+                        this.$store.dispatch('departments/getDepartments')
                     })
                     .catch(error => {
                         console.log(error)

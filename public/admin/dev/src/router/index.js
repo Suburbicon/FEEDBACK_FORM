@@ -98,6 +98,11 @@ export default new Router({
                     component: () => import('../views/departments/Departments')
                 },
                 {
+                    path: 'sectors',
+                    name: 'Список секторов',
+                    component: () => import('../views/sectors/Sectors')
+                },
+                {
                     path: 'companies',
                     name: 'Компании',
                     component: () => import('../views/companies/Companies')

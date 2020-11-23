@@ -51,6 +51,11 @@ export default {
       url: '/departments',
       icon: 'icon-home'
     },
+    {
+      name: 'Список секторов',
+      url: '/sectors',
+      icon: 'icon-home'
+    },
     // {
     //   name: 'Компании',
     //   url: '/companies',
