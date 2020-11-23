@@ -8,7 +8,7 @@ export default {
     actions: {
         getCompaniesDataInStorage({commit}) {
             return new Promise((resolve, reject) => {
-                axios.post('/companies/get/')
+                axios.post('/companies/get')
                 .then(response => {
                     commit('setCompanyData', response.data)
                     resolve(response.data)

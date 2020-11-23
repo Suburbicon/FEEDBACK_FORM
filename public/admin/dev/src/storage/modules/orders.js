@@ -17,7 +17,7 @@ export default {
   actions: {
     getOrdersDataInStorage({commit}) {
       return new Promise((resolve, reject) => {
-        axios.post('/orders/get/')
+        axios.post('/orders/get')
         .then(response => {
           commit('setOrdersData', response.data)
           resolve(response.data)
@@ -30,7 +30,7 @@ export default {
 
     getTypesList(context) {
       return new Promise((resolve, reject) => {
-        axios.post('/companies/gettypeslist/')
+        axios.post('/companies/gettypeslist')
         .then(response => {
           resolve(response.data)
         })
@@ -42,7 +42,7 @@ export default {
 
     getActivitiesList(context) {
       return new Promise((resolve, reject) => {
-        axios.post('/companies/getactivitieslist/')
+        axios.post('/companies/getactivitieslist')
         .then(response => {
           resolve(response.data)
         })

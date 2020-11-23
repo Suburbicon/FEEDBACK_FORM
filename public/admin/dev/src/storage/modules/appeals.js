@@ -10,7 +10,7 @@ export default {
     actions: {
         getAppealsDataInStorage({commit}) {
             return new Promise((resolve, reject) => {
-                axios.post('/appeals/get/')
+                axios.post('/appeals/get')
                 .then(response => {
                     console.log(response);
                     commit('setAppealData', response.data)

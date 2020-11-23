@@ -21,7 +21,7 @@ export default {
 
     actions: {
         async getSectorsData({commit}) {
-            const { data } = await axios.post('/sectors/get/')
+            const { data } = await axios.post('/sectors/get')
             console.log(data)
             commit('setSectorsData', data)
         },

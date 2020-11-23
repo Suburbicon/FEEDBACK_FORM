@@ -9,7 +9,7 @@ export default {
 
     actions: {
         async getDepartments({commit}) {
-            const {data} = await axios.post('/departments/get/')
+            const {data} = await axios.post('/departments/get')
             commit('setDepartmentsData', data)
         },
     },

@@ -9,7 +9,7 @@ export default {
   actions: {
     setConfig({commit}) {
       axios
-      .post('/config/get/')
+      .post('/config/get')
       .then(response => {
         if (response.data['services'] || response.data['statuses']) {
           commit('setConfig', response.data)
