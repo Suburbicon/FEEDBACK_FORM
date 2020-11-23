@@ -46,6 +46,11 @@ export default {
       url: '/city',
       icon: 'icon-compass'
     },
+    {
+      name: 'Список ЦОНов',
+      url: '/departments',
+      icon: 'icon-home'
+    },
     // {
     //   name: 'Компании',
     //   url: '/companies',

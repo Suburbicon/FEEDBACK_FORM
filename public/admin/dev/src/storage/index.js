@@ -8,6 +8,7 @@ import members from './modules/members'
 import citys from './modules/citys'
 import appeals from './modules/appeals'
 import companies from './modules/companies'
+import departments from './modules/departments'
 
 Vue.use(Vuex)
 
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     members,
     citys,
     appeals,
+    departments,
     companies
   }
 })

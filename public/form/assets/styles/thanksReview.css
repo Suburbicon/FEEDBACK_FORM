@@ -11,13 +11,16 @@ body{
 
 .thanks-review{
     margin-top: 155px;
-    display: grid;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .thanks-review__wrap{
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 
 .thanks-review__img{

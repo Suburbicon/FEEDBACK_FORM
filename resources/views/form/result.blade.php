@@ -13,7 +13,7 @@
 <section class="thanks-review container">
     <div class="thanks-review__wrap">
         <img class="thanks-review__img" src="{{ asset('form/assets/image/tkankReview.svg') }}" alt="tkankReview">
-        <h1 class="thanks-review__title">Спасибо за бращение!</h1>
+        <h1 class="thanks-review__title">Спасибо за обращение!</h1>
     </div>
 </section>
 </body>
