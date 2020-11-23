@@ -7,26 +7,30 @@
             <b-button size="sm" class="mar-top" :hidden="button_hidden" variant="warning" @click="showModal('edit')"><i
                 class="fa fa-edit"></i> Редактировать
             </b-button>
+            <b-button size="sm" class="mar-top ml-2" :hidden="button_hidden" variant="success" @click="QRCodeGenerate">Сгенерировать QR код</b-button>
+            <b-button size="sm" class="mar-top ml-2" :hidden="button_hidden" variant="primary" @click="$bvModal.show('qr-form')">Показать QR код</b-button>
 
-            <b-table
-                selectable
-                select-mode="single"
-                selectedVariant="success"
-                @row-selected="rowSelected"
+            <keep-alive>
+                <b-table
+                    selectable
+                    select-mode="single"
+                    selectedVariant="success"
+                    @row-selected="rowSelected"
 
-                show-empty
-                empty-text="Нет записей для показа"
+                    show-empty
+                    empty-text="Нет записей для показа"
 
-                :current-page="currentPage"
-                :per-page="perPage"
+                    :current-page="currentPage"
+                    :per-page="perPage"
 
-                hover
-                small
-                :fixed="true"
-                :bordered="true"
-                :items="filtered"
-                :fields="fields">
-            </b-table>
+                    hover
+                    small
+                    :fixed="true"
+                    :bordered="true"
+                    :items="filtered"
+                    :fields="fields">
+                </b-table>
+            </keep-alive>
 
             <b-row>
                 <b-col>
@@ -57,16 +61,19 @@
             </b-row>
         </b-card>
         <member-form :items="member_selected" :action="action"></member-form>
+        <qr-form :items="member_selected"></qr-form>
     </b-card-group>
 </template>
 
 <script>
 import memberForm from './Sector'
+import qrForm from './QR'
+import axios from "axios";
 
 export default {
-    name: 'Departments',
+    name: 'Sectors',
 
-    components: {memberForm},
+    components: {memberForm, qrForm},
 
     data: () => {
         return {
@@ -93,6 +100,17 @@ export default {
         showModal(action) {
             this.action = action
             this.$bvModal.show('member-form')
+        },
+
+        QRCodeGenerate () {
+            axios.post(`/sectors/get_qr?id=${this.member_selected.id}&id_city=${this.member_selected.id_city}&id_department=${this.member_selected.id_department}`)
+                .then(response => {
+                    console.log(response);
+                    this.$store.dispatch('sectors/getSectorsData')
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         },
 
         rowSelected(items) {

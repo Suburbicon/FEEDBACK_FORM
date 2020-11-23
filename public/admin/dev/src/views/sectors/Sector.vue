@@ -45,7 +45,7 @@ let defaultField = function () {
 }
 
 export default {
-    name: "Department",
+    name: "Sector",
 
     props: {
         action: String,
@@ -113,9 +113,7 @@ export default {
                     return
                 }
 
-                console.log('this.items.id_department: ', this.items.id_department)
                 let currentDepartment = this.departments.filter(item => item.id === +this.items.id_department);
-                console.log('asdasa: ', currentDepartment)
 
                 if (this.action === 'add') {
                     this.url = `/sectors/${this.action}?id_department=${this.items.id_department}&id_city=${currentDepartment[0].id_city}&name=${this.items.name}`;
