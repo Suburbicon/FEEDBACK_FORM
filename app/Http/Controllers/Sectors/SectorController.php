@@ -43,6 +43,17 @@ class SectorController extends Controller
         }
     }
 
+    function AddQR(Request $request)
+    {
+        try {
+            $response = Sectors::AddQR($request);
+
+            return $this->successResponse(200, $response);
+        } catch (\DomainException $e) {
+            return $this->errorResponse($e->getMessage(), 422);
+        }
+    }
+
     /* function Search(Request $request) {
       try {
         $request->validate([
