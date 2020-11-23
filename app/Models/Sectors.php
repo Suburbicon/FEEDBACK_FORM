@@ -58,9 +58,7 @@ class Sectors extends Model
             'path_to_qr' => $path_to_qr
         ]);
 
-        $url = Storage::url($path_to_qr);
-
-        return $url;
+        return $path_to_qr;
     }
 
     static function Edit($request)

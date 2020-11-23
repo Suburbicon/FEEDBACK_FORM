@@ -21,7 +21,7 @@ class QrController extends Controller {
                 ->generate($gen_link, storage_path('app/public/qrcodes/'.time().'.svg'));
 
 //            dd('/storage/app/public/qrcodes/'.time().'.svg');
-            return '/storage/app/public/qrcodes/'.time().'.svg';
+            return '/storage/qrcodes/'.time().'.svg';
         } catch (\DomainException $e) {
             return $this->errorResponse($e->getMessage(), 422);
         }
