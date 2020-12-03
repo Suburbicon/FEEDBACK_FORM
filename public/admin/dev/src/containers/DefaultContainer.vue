@@ -6,8 +6,8 @@
       <b-link class="navbar-brand" to="/">
 <!--        <div class="navbar-brand-full">ADMIN QR</div>-->
 <!--        <div class="navbar-brand-minimized">QR</div>-->
-        <img class="navbar-brand-full" src="/admin/compiled/img/avatars/logo.png" width="50" height="50" alt="Smart Comment">
-        <img class="navbar-brand-minimized" src="/admin/compiled/img/avatars/logo.png" width="50" height="50" alt="Smart Comment">
+        <img src="/admin/compiled/img/avatars/logo.png" width="75%" height="45" alt="Smart Comment" class="navbar-brand-full">
+        <img src="/admin/compiled/img/avatars/logo.png" width="40" height="35" alt="Smart Comment" class="navbar-brand-minimized">
       </b-link>
 
       <SidebarToggler class="d-md-down-none" display="lg" />
