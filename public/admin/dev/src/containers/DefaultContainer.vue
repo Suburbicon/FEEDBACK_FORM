@@ -4,10 +4,10 @@
       <SidebarToggler class="d-lg-none" display="md" mobile />
 
       <b-link class="navbar-brand" to="/">
-        <div class="navbar-brand-full">ADMIN QR</div>
-        <div class="navbar-brand-minimized">QR</div>
-        <!--<img class="navbar-brand-full" src="/admin/compiled/img/brand/logo.svg" width="50" height="50" alt="Big Logo">-->
-<!--        <img class="navbar-brand-minimized" src="/admin/compiled/img/brand/logo.svg" width="50" height="50" alt="Big Logo">-->
+<!--        <div class="navbar-brand-full">ADMIN QR</div>-->
+<!--        <div class="navbar-brand-minimized">QR</div>-->
+        <img class="navbar-brand-full" src="/admin/compiled/img/avatars/logo.png" width="50" height="50" alt="Smart Comment">
+        <img class="navbar-brand-minimized" src="/admin/compiled/img/avatars/logo.png" width="50" height="50" alt="Smart Comment">
       </b-link>
 
       <SidebarToggler class="d-md-down-none" display="lg" />
