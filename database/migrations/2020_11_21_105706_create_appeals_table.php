@@ -19,6 +19,8 @@ class CreateAppealsTable extends Migration
             $table->string('id_department', 255);
             $table->string('id_sector', 255);
             $table->text('info');
+            $table->text('tel');
+            $table->text('name');
             $table->timestamps();
         });
     }

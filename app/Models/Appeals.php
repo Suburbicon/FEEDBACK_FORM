@@ -20,6 +20,8 @@ class Appeals extends Model {
       'id_department' => 'required|string|max:255',
       'id_sector' => 'required|string|max:255',
       'info' => 'required|string|max:255',
+      'tel' => 'required|string|max:255',
+      'name' => 'required|string|max:255',
     ]);
   }
 
@@ -29,6 +31,8 @@ class Appeals extends Model {
       'id_department' => $request['id_department'],
       'id_sector' => $request['id_sector'],
       'info' => $request['info'],
+      'tel' => $request['tel'],
+      'name' => $request['name'],
     ]);
 
     return array(
@@ -37,6 +41,8 @@ class Appeals extends Model {
       'id_department' => $appeals['id_department'],
       'id_sector' => $appeals['id_sector'],
       'info' => $appeals['info'],
+      'tel' => $appeals['tel'],
+      'name' => $appeals['name'],
     );
   }
 
