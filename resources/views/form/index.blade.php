@@ -27,13 +27,13 @@
             <input type="hidden" name="_token" class="token_js" value="{{ csrf_token() }}">
             <h1 class="form__title">Оставьте отзыв</h1>
             <div class="form__fields">
-                <input type="text" class="form__filed" placeholder="Имя">
+                <input type="text" class="form__filed" name="name" id="name" placeholder="Имя">
             </div>
             <div class="form__fields">
-                <input type="tel" class="form__filed" placeholder="Телефон">
+                <input type="tel" class="form__filed" name="tel" id="tel" placeholder="Телефон">
             </div>
             <div class="form__fields">
-                <textarea  class="form__filed textarea" name="" id="" cols="20" rows="10" placeholder="Оставьте комментарий"></textarea>
+                <textarea  class="form__filed textarea" name="info" id="info" cols="20" rows="10" placeholder="Оставьте комментарий"></textarea>
             </div>
             <button class="content__button js_btn_form">
                 <span class="content__button-title">Отправить отзыв</span>
