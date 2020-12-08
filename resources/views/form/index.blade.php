@@ -24,6 +24,7 @@
             <img src="{{ asset('form/assets/image/dis.png') }}" alt="" class="info__img js_dis">
         </div>
         <form action="" class="content__form form js_content_step_2">
+            <input type="hidden" name="_token" class="token_js" value="{{ csrf_token() }}">
             <h1 class="form__title">Оставьте отзыв</h1>
             <div class="form__fields">
                 <input type="text" class="form__filed" placeholder="Имя">
