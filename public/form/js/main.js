@@ -1,5 +1,12 @@
 $(document).ready(function () {
 
+    $('.js_content_step_2').hide();
+
+    $('.js_dis').click( function (e){
+        $('.js_content_step_1').hide();
+        $('.js_content_step_2').show();
+    });
+
     // $('#phone_reg').mask('+7 (000) 000 00 00', {placeholder: "+7 (___) ___ __ __"});
     // $('#phone_login').mask('+7 (000) 000 00 00', {placeholder: "+7 (___) ___ __ __"});
     //
@@ -47,7 +54,7 @@ $(document).ready(function () {
     var id_sector = getUrlParameter('id_sector');
     var _token = $('.token_js').val();
 
-    $('.form_post_js').click( function (e){
+    $('.js_btn_form').click( function (e){
             e.preventDefault();
         // console.log($('#info').val());
             sendAjaxForm('result_form',
@@ -64,7 +71,7 @@ $(document).ready(function () {
             // data: $("#"+ajax_form).serialize(),
             success: function(response) {
                 var id = response.id;
-                window.location = "/test_result"
+                // window.location = "/test_result"
                 // console.log(response);
                 //
                 // if(id.length){
