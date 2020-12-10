@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
     $('.js_content_step_2').hide();
+    $('.js_content_step_3').hide();
 
     $('.js_dis').click( function (e){
         $('.js_content_step_1').hide();
-        $('.js_content_step_3').hide();
         $('.js_content_step_2').show();
     });
 
@@ -73,7 +73,7 @@ $(document).ready(function () {
             success: function(response) {
                 var id = response.id;
                 $('.js_content_step_3').show();
-                $('.js_content_step_1').hide();
+                $('.js_content_step_2').hide();
                 // window.location = "/test_result"
                 // console.log(response);
                 //
