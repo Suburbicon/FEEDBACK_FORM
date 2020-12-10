@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('form/assets/styles/main.css') }}">
     <script type="text/javascript" src="{{ asset('form/js/jquery-3.2.1.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('form/js/main.js') }}"></script>
+<script type="text/javascript" src="{{ asset('form/js/main.js') }}?=v2"></script>
 <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/svg">
 </head>
 <body>
