@@ -39,6 +39,10 @@
                 <span class="content__button-title">Отправить отзыв</span>
             </button>
         </form>
+        <div class="content__info info js_content_step_3">
+            <h2 class="info__title">Спасибо за отзыв</h2>
+            <img src="{{ asset('form/assets/image/dis.png') }}" alt="" class="info__img">
+        </div>
     </div>
 </section>
 </body>
