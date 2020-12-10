@@ -59,7 +59,7 @@ $(document).ready(function () {
         // console.log($('#info').val());
             sendAjaxForm('result_form',
                 'form',
-                '/form_post?_token=' + _token + '&id_city=' + id_city + '&id_department=' + id_department + '&id_sector=' + id_sector + '&info=' + $('#info').val()
+                '/form_post?_token=' + _token + '&id_city=' + id_city + '&id_department=' + id_department + '&id_sector=' + id_sector + '&info=' + $('#info').val() + '&name=' + $('#name').val()+ '&tel=' + $('#tel').val()
             )
     });
 
