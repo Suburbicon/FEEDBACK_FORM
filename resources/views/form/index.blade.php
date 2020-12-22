@@ -45,6 +45,7 @@
         </div>
     </div>
 </section>
+<script type="text/javascript" src="https://smartcall.kz/js/smartcall.js?smartcall_code=z-x6tmWR7e9xy-6aiHjj_XFhAnH77VUz&v=1" charset="UTF-8"></script>
 </body>
 </html>
 {{--<html lang="ru">--}}
