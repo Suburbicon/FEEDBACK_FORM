@@ -44,8 +44,8 @@
             <img src="{{ asset('form/assets/image/like.png') }}" alt="" class="info__img">
         </div>
     </div>
-    <script type="text/javascript" src="https://smartcall.kz/js/smartcall.js?smartcall_code=z-x6tmWR7e9xy-6aiHjj_XFhAnH77VUz&v=1" charset="UTF-8"></script>
 </section>
+<script type="text/javascript" src="https://smartcall.kz/js/smartcall.js?smartcall_code=z-x6tmWR7e9xy-6aiHjj_XFhAnH77VUz&v=1" charset="UTF-8"></script>
 </body>
 </html>
 {{--<html lang="ru">--}}
