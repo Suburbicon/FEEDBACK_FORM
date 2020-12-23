@@ -1,6 +1,6 @@
 <template>
     <b-card-group>
-        <b-card header="Список городов">
+        <b-card header="Список обращений">
 <!--            <b-button size="sm" class="mar-top" :hidden="!button_hidden" variant="success" @click="showModal('add')"><i-->
 <!--                class="fa fa-plus"></i> Добавить-->
 <!--            </b-button>-->
