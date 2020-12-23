@@ -1,6 +1,6 @@
 <template>
     <b-card-group>
-        <b-card header="Список ЦОНов">
+        <b-card header="Список объектов">
             <b-button size="sm" class="mar-top" :hidden="!button_hidden" variant="success" @click="showModal('add')"><i
                 class="fa fa-plus"></i> Добавить
             </b-button>
@@ -78,7 +78,7 @@ export default {
             totalRows: 0,
             perPage: 10,
             fields: [
-                {key: 'name', label: 'Наименование ЦОНа', sortable: true},
+                {key: 'name', label: 'Наименование объекта', sortable: true},
                 {key: 'city_name', label: 'Наименование города', sortable: true},
             ],
             filters: {

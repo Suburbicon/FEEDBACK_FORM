@@ -47,7 +47,7 @@ export default {
       icon: 'icon-compass'
     },
     {
-      name: 'Список ЦОНов',
+      name: 'Список объектов',
       url: '/departments',
       icon: 'icon-home'
     },

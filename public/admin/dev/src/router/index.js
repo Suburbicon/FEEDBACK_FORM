@@ -94,7 +94,7 @@ export default new Router({
                 },
                 {
                     path: 'departments',
-                    name: 'Список ЦОНов',
+                    name: 'Список объектов',
                     component: () => import('../views/departments/Departments')
                 },
                 {

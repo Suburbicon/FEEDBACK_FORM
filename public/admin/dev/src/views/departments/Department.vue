@@ -2,7 +2,7 @@
     <b-modal id="member-form" size="lg" hide-footer :title="titleForm[action]">
         <b-form @submit.stop.prevent="onSubmitModal">
             <b-col sm="4">
-                <b-form-group label-for="name" label="Наименование ЦОНа">
+                <b-form-group label-for="name" label="Наименование объекта">
                     <b-form-input type="text"
                                   id="name"
                                   name="name"
@@ -12,7 +12,7 @@
                                   :state="validateState('name')">
                     </b-form-input>
                 </b-form-group>
-                <b-form-group label-for="city" label="Место нахождения ЦОНа">
+                <b-form-group label-for="city" label="Место нахождения объекта">
                     <b-form-select v-model="items.id_city"
                                    :options="cities"
                                    value-field="id"
@@ -72,8 +72,8 @@ export default {
             defaultFields: null,
 
             titleForm: {
-                "add": "Добавление ЦОНа в административную панель",
-                "edit": "Редактирование ЦОНа",
+                "add": "Добавление объекта в административную панель",
+                "edit": "Редактирование объекта",
             },
 
             textButton: {

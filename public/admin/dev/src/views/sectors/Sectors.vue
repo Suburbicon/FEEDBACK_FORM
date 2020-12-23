@@ -87,7 +87,7 @@ export default {
             fields: [
                 {key: 'name', label: 'Наименование сектора', sortable: true},
                 {key: 'city_name', label: 'Наименование города', sortable: true},
-                {key: 'department_name', label: 'Наименование ЦОНа', sortable: true},
+                {key: 'department_name', label: 'Наименование объекта', sortable: true},
             ],
             filters: {
                 department_name: '',

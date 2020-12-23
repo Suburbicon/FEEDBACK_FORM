@@ -12,7 +12,7 @@
                                   :state="validateState('name')">
                     </b-form-input>
                 </b-form-group>
-                <b-form-group label-for="city" label="ЦОН относящийся к сектору">
+                <b-form-group label-for="city" label="Объект относящийся к сектору">
                     <b-form-select v-model="items.id_department"
                                    :options="departments"
                                    value-field="id"
