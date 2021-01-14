@@ -1,4 +1,4 @@
-<template>
+    <template>
     <b-card-group>
         <b-card header="Список городов">
             <b-button size="sm" class="mar-top" :hidden="!button_hidden" variant="success" @click="showModal('add')"><i
