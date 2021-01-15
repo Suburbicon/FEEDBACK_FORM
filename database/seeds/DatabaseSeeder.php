@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    { 
         DB::table('users')->insert([
             'login' => 'admin_qr',
             'name' => 'admin',

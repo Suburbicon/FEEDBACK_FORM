@@ -32,8 +32,13 @@ export default {
     //   }]
     // },
     {
-      name: 'Обращения',
-      url: '/appeals',
+      name: 'Обращения(опрос)',
+      url: '/appeals_quiz',
+      icon: 'icon-phone'
+    },
+    {
+      name: 'Обращения(обзор)',
+      url: '/appeals_review',
       icon: 'icon-phone'
     },
     // {
@@ -66,10 +71,10 @@ export default {
     //   url: '/segmentation',
     //   icon: 'icon-chart'
     // },
-    {
-      name: 'Логи',
-      url: '/logs',
-      icon: 'icon-note'
-    }
+    // {
+    //   name: 'Логи',
+    //   url: '/logs',
+    //   icon: 'icon-note'
+    // }
   ]
 }

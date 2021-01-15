@@ -40,10 +40,10 @@ export default {
 
     methods: {
         print() {
-            let win = window.open();
-            win.document.write(`<img src="${this.items.path_to_qr}">`);
-            win.print();
-            win.close()
+            // let win = window.open();
+            window.document.write('<img src='+this.items.path_to_qr+'>');
+            window.print();
+            window.close()
         },
     }
 }

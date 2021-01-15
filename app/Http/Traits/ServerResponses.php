@@ -6,7 +6,7 @@ trait ServerResponses {
 
   protected function successResponse($code, $data = array()) {
     return response()->json(array(
-      'success' => true,
+      'response' => 'success',
       'result' => $data
     ), $code);
   }

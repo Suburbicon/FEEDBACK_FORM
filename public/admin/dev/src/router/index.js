@@ -88,9 +88,14 @@ export default new Router({
                     component: () => import('../views/citys/Citys')
                 },
                 {
-                    path: 'appeals',
-                    name: 'Обращения',
-                    component: () => import('../views/appeals/Appeals')
+                    path: 'appeals_quiz',
+                    name: 'Обращения(опрос)',
+                    component: () => import('../views/appeals/AppealsQuiz')
+                },
+                {
+                    path: 'appeals_review',
+                    name: 'Обращения(обзор)',
+                    component: () => import('../views/appeals/AppealsReview')
                 },
                 {
                     path: 'departments',

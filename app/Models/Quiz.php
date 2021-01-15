@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Appeals extends Model {
+class Quiz extends Model {
 
-  protected $table = 'appeals';
+  protected $table = 'quiz';
   protected $guarded = [];
 
   static public function getData(){
-    return DB::table('appeals')->select("*")->orderBy('id', 'asc')->get();
+    return DB::table('quiz')->select("*")->orderBy('id', 'asc')->get();
   }
 
   static function Validate($request) {
@@ -19,33 +19,45 @@ class Appeals extends Model {
       'id_city' => 'required|string|max:255',
       'id_department' => 'required|string|max:255',
       'id_sector' => 'required|string|max:255',
-      'phone' => 'required|string|min:12|max:12',
+      'phone' => 'required|string|max:255',
       'name' => 'required|string|max:255',
       'comment' => 'required|string|max:255',
+      'comment_stars' => 'required|string|max:255',
+      'liked' => 'required|string|max:255',
+      'not_liked' => 'required|string|max:255',
+      'rating' => 'required|string|max:255',
       'recomendation_rating' => 'required|string'
     ]);
   }
 
   static function Add($request) {
-    $appeals = Appeals::create([
+      $quiz = Quiz::create([
       'id_city' => $request['id_city'],
       'id_department' => $request['id_department'],
       'id_sector' => $request['id_sector'],
       'phone' => $request['phone'],
       'name' => $request['name'],
       'comment' => $request['comment'],
-      'recomendation_rating' => $request['recomendation_rating']
+      'comment_stars' => $request['comment_stars'],
+      'liked' => $request['liked'],
+      'not_liked' => $request['not_liked'],
+      'rating' => $request['rating'],
+      'recomendation_rating' => $request['recomendation_rating'],
     ]);
 
     return array(
-      'id' => $appeals['id'],
-      'id_city' => $appeals['id_city'],
-      'id_department' => $appeals['id_department'],
-      'id_sector' => $appeals['id_sector'],
-      'phone' => $appeals['phone'],
-      'name' => $appeals['name'],
-      'comment' => $appeals['comment'],
-      'recomendation_rating' => $appeals['recomendation_rating']
+      'id' => $quiz['id'],
+      'id_city' => $quiz['id_city'],
+      'id_department' => $quiz['id_department'],
+      'id_sector' => $quiz['id_sector'],
+      'phone' => $quiz['phone'],
+      'name' => $quiz['name'],
+      'comment' => $quiz['comment'],
+      'comment_stars' => $quiz['comment_stars'],
+      'liked' => $quiz['liked'],
+      'not_liked' => $quiz['not_liked'],
+      'rating' => $quiz['rating'],
+      'recomendation_rating' => $quiz['recomendation_rating'],
     );
   }
 

@@ -62,11 +62,11 @@
 
 <script>
 import {mapGetters} from 'vuex';
-import appealsForm from './Appeal'
+import appealsForm from './AppealReview'
 // import appeals from "@/storage/modules/appeals";
 
 export default {
-    name: 'Appeals',
+    name: 'AppealsReview',
 
     components: {appealsForm},
 
@@ -80,10 +80,22 @@ export default {
             totalRows: 0,
             perPage: 10,
             fields: [
-                {key: 'info', label: 'Текст обращения', sortable: true},
+                {key: 'phone', label: 'Телефон', sortable: true},
+                {key: 'name', label: 'ФИО', sortable: true},
+                {key: 'comment', label: 'Комментарий', sortable: true},
+                {key: 'id_city', label: 'Наименование города', sortable: true},
+                {key: 'id_department', label: 'Наименование объекта', sortable: true},
+                {key: 'id_sector', label: 'Наименование сектора', sortable: true},
+                {key: 'recomendation_rating', label: 'Общая оценка', sortable: true},
             ],
             filters: {
+                phone: '',
                 name: '',
+                comment: '',
+                id_city: '',
+                id_department: '',
+                id_section: '',
+                recomendation_rating: '',
             }
         }
     },
@@ -111,7 +123,7 @@ export default {
         },
 
         refresh() {
-            this.$store.dispatch('appeals/getAppealsDataInStorage').catch(error => {
+            this.$store.dispatch('appeals/getAppealsReviewDataInStorage').catch(error => {
                 console.log(error)
             })
         }
@@ -120,6 +132,52 @@ export default {
         ...mapGetters({
             items: 'appeals/getAppeals'
         }),
+        sectors() {
+            return this.$store.getters["sectors/getSectors"];
+        },
+
+        departments() {
+            return this.$store.getters["departments/getDepartments"];
+        },
+
+        cities() {
+            return this.$store.getters["citys/getCitys"];
+        },
+
+        fullDataSectors() {
+            let sectors = this.sectors;
+
+            for (let i = 0; i < sectors.length; i++) {
+                for (let y = 0; y < this.cities.length; y++) {
+                    if (this.cities[y].id === +sectors[i].id_city) {
+                        sectors[i].city_name = this.cities[y].name;
+                    }
+                }
+
+                for (let y = 0; y < this.departments.length; y++) {
+                    if (this.departments[y].id === +sectors[i].id_department) {
+                        sectors[i].department_name = this.departments[y].name;
+                    }
+                }
+            }
+
+            return sectors;
+        },
+
+        filteredSCD() {
+            console.log(this.fullDataSectors);
+
+            const filtered = this.fullDataSectors.filter(item => {
+                return Object.keys(this.filters).every(key =>
+                    String(item[key]).includes(this.filters[key])
+                );
+            });
+
+            this.totalRows = filtered.length;
+            this.currentPage = 1;
+
+            return filtered.length > 0 ? filtered : [];
+        },
 
         filtered() {
             const filtered = this.items.filter(item => {
@@ -129,6 +187,32 @@ export default {
 
             this.totalRows = filtered.length
             this.currentPage = 1
+
+
+            console.log(this.sectors)
+            console.log(this.departments)
+            console.log(this.cities)
+
+            const finalFiltered = filtered.forEach(item => {
+                this.sectors.forEach(el => {
+                    if(el['id'] == item['id_sector']){
+                        item['id_sector'] = el['name']
+                    }
+                })
+                this.cities.forEach(el => {
+                    if(el['id'] == item['id_city']){
+                        item['id_city'] = el['name']
+                    }
+                })
+                this.departments.forEach(el => {
+                    if(el['id'] == item['id_department']){
+                        item['id_department'] = el['name']
+                    }
+                })
+            })
+
+            console.log(filtered)
+            console.log(finalFiltered)
 
             return filtered.length > 0 ? filtered : []
         },
@@ -149,7 +233,7 @@ export default {
     },
 
     mounted() {
-        this.$store.dispatch('appeals/getAppealsDataInStorage').catch(error => {
+        this.$store.dispatch('appeals/getAppealsReviewDataInStorage').catch(error => {
             console.log(error)
         })
     }

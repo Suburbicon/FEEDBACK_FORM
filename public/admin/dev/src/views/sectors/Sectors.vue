@@ -87,8 +87,9 @@
                 </b-col>
             </b-row>
         </b-card>
-        <!-- <member-form :items="member_selected" :action="action"></member-form>
-        <qr-form :items="member_selected"></qr-form> -->
+       <member-form :items="member_selected" :action="action"></member-form>
+
+        <qr-form :items="member_selected"></qr-form>
     </b-card-group>
 </template>
 
@@ -105,7 +106,7 @@ export default {
     data() {
         return {
             action: "",
-            member_selected: undefined,
+            member_selected: Object,
             button_hidden: true,
 
             currentPage: 1,
@@ -153,7 +154,7 @@ export default {
         },
 
         rowSelected(items) {
-            let member_selected = undefined;
+            let member_selected;
 
             if (items.length > 0) {
                 member_selected = { ...items[0] };

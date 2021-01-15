@@ -1,9 +1,11 @@
 <?php
-Route::get('/test_index', 'ViewFormController@index');
-Route::get('/test_result', 'ViewFormController@result');
 
-Route::get('/form_post', 'ViewFormController@Add');
-
+Route::get('/quiz', 'QuizController@index');
+Route::get('/thanks-quiz', 'QuizController@result');
+Route::post('/quiz-fetch', 'QuizController@store');
+Route::get('/info', 'AppealsController@index');
+Route::get('/thanks-review', 'AppealsController@result');
+Route::post('/info-fetch', 'AppealsController@store');
 
 Route::get('qr-code', function () {
     return QrCode::encoding('UTF-8')->size(100)->generate('https://google.com');
@@ -47,7 +49,8 @@ Route::group(
         Route::post('/city/add', 'Citys\CityController@Add');
         Route::post('/city/edit', 'Citys\CityController@Edit');
 
-        Route::post('/appeals/get', 'Appeals\AppealController@getData');
+        Route::post('/appeals_review/get', 'Appeals\AppealController@getData');
+        Route::post('/appeals_quiz/get', 'QuizController@getData');
 //    Route::post('/city/add/', 'Citys\CityController@Add');
 //    Route::post('/city/edit/', 'Citys\CityController@Edit');
 
@@ -65,4 +68,3 @@ Route::group(
 );
 
 Auth::routes(['register' => false]);
-
