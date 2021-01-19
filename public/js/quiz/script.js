@@ -24,7 +24,19 @@ $(function () {
 
     localStorage.setItem('recomendation_rating',recomendation_rating)
 
-      window.location.href = "/info"
+      var paramsGET = {};
+
+      if (window.location.href.match(/.*\?.*/)) {
+          for (var i = 0; i < 3; i++) {
+              var _tmp = window.location.href.replace(/.*\?/,'')
+                  .split('&')[i]
+                  .split('=');
+
+              paramsGET[_tmp[0]] = _tmp[1];
+          }
+      }
+
+      window.location.href = `/info?id_city=${paramsGET['id_city']}&id_department=${paramsGET['id_department']}&id_sector=${paramsGET['id_sector']}`
 
   }); // INFO PAGE (REVIEW FORM)
 
