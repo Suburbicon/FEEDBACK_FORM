@@ -4,7 +4,8 @@ export default {
     namespaced: true,
 
     state: {
-        items: []
+        appealsQuiz: [],
+        appealsReview: []
     },
 
     actions: {
@@ -13,7 +14,7 @@ export default {
                 axios.post('/appeals_review/get')
                 .then(response => {
                     console.log(response);
-                    commit('setAppealData', response.data)
+                    commit('setAppealReviewData', response.data)
                     resolve(response.data)
                 })
                 .catch(error => {
@@ -26,7 +27,7 @@ export default {
                 axios.post('/appeals_quiz/get')
                 .then(response => {
                     console.log(response);
-                    commit('setAppealData', response.data)
+                    commit('setAppealQuizData', response.data)
                     resolve(response.data)
                 })
                 .catch(error => {
@@ -37,12 +38,16 @@ export default {
     },
 
     mutations: {
-        setAppealData(state, items) {
-            state.items = items
+        setAppealReviewData(state, items) {
+            state.appealsReview = items
+        },
+        setAppealQuizData(state, items) {
+            state.appealsQuiz = items
         }
     },
 
     getters: {
-        getAppeals: state => { return state.items }
+        getAppealsReview: state => { return state.appealsReview },
+        getAppealsQuiz: state => { return state.appealsQuiz },
     }
 }

@@ -136,7 +136,7 @@ export default {
     },
     computed: {
         ...mapGetters({
-            items: 'appeals/getAppeals'
+            items: 'appeals/getAppealsQuiz'
         }),
 
         sectors() {

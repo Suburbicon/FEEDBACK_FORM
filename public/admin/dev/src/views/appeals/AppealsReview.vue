@@ -130,7 +130,7 @@ export default {
     },
     computed: {
         ...mapGetters({
-            items: 'appeals/getAppeals'
+            items: 'appeals/getAppealsReview'
         }),
         sectors() {
             return this.$store.getters["sectors/getSectors"];
