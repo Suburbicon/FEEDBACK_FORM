@@ -14,7 +14,7 @@ class QrController extends Controller {
 
     public function QrGenerated($params) {
         try {
-            $gen_link = 'http://localhost:8000/info?id_city='.$params['id_city'].'&id_department='.$params['id_department'].'&id_sector='.$params['id'];
+            $gen_link = 'http://78.40.108.18:8080/info?id_city='.$params['id_city'].'&id_department='.$params['id_department'].'&id_sector='.$params['id'];
 
             QrCode::size(500)
                 ->format('svg')
