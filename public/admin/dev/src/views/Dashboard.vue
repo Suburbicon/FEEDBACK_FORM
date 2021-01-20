@@ -2,8 +2,9 @@
     <div class="animated fadeIn">
         <b-card-group columns class="card-columns">
 
-            <b-card header="Статусы обращений">
+            <b-card v-if="appealsQuiz" header="Статистика обращений">
                 <PieChart :appealsquiz="appealsQuiz" :appealsreview="appealsReview"/>
+
 <!--                <div class="chart-wrapper">-->
 <!--                    <canvas ref="canvas"></canvas>-->
 <!--                </div>-->
@@ -25,6 +26,14 @@
 <!--&lt;!&ndash;                        </button>&ndash;&gt;-->
 <!--                    </div>-->
 <!--                </b-card-footer>-->
+            </b-card>
+            <h2 v-else>No data!</h2>
+
+            <b-card header="Статистика обращений">
+                <div v-if="appealsQuiz" class="chart-wrapper">
+                    <bar-chart :appealsquiz="appealsQuiz" :appealsreview="appealsReview"/>
+                </div>
+                <h2 v-else>No Data!</h2>
             </b-card>
 
             <b-card-group>
@@ -106,17 +115,28 @@
 <!--                    </div>-->
 <!--                </b-card>-->
             </b-card-group>
+
         </b-card-group>
         <b-card-group columns class="card-columns">
-            <b-card header="Сектора">
-                <div class="chart-wrapper">
+            <b-card header="Рейтинг">
+                <div v-if="appealsQuiz" class="chart-wrapper">
                     <b-card-text
-                        >Данная статистика отображает информацию по секторам
-                        обращений</b-card-text
+                        >Данная статистика отображает информацию по оценки рекомендации ЦОНа как оперативный центр для получения государственных услуг</b-card-text
                     >
-<!--                    <DoughnutExample/>-->
-                    <bubble-chart :appealsquiz="appealsQuiz" :appealsreview="appealsReview"/>
+
+                    <pie-chart-three :appealsquiz="appealsQuiz" :appealsreview="appealsReview"/>
                 </div>
+                <h2 v-else>No Data!</h2>
+            </b-card>
+            <b-card header="Оценка">
+                <div v-if="appealsQuiz" class="chart-wrapper">
+                    <b-card-text
+                        >Данная статистика отображает информацию по оценке удовлетворенности качеством оказания государственных услуг в ООНе</b-card-text
+                    >
+
+                    <pie-chart-two :appealsquiz="appealsQuiz" :appealsreview="appealsReview"/>
+                </div>
+                <h2 v-else>No Data!</h2>
             </b-card>
 
 <!--            <b-card-group header="Статистика обращений">-->
@@ -207,21 +227,12 @@
 <!--&lt;!&ndash;                </b-card>&ndash;&gt;-->
 <!--            </b-card-group>-->
 
-            <b-card header="Статистика обращений">
-                <div class="chart-wrapper">
-<!--                    <PieChart :appealsquiz="appealsQuiz" :appealsreview="appealsReview"/>-->
-<!--                    <line-chart :chardata="dataCollection" :options="chartOptions"></line-chart>-->
-                    <bar-chart :appealsquiz="appealsQuiz" :appealsreview="appealsReview"/>
-                </div>
-            </b-card>
+
         </b-card-group>
     </div>
 </template>
 <script>
 
-//import DoughnutExample from "./charts/DoughnutExample";
-//import PieExample from "./charts/PieExample";
-//import HorizontalBar from "./charts/HorizontalBarExample";
 import {mapGetters} from "vuex";
 
 import Pie from 'vue-chartjs'
@@ -229,59 +240,54 @@ import Pie from 'vue-chartjs'
 
 import BarChart from "./charts/BarChart.vue";
 import PieChart from "./charts/PieChart.vue";
-import BubbleChart from "./charts/BubbleChart.vue";
+import PieChartTwo from "./charts/PieChartTwo.vue";
+import PieChartThree from "./charts/PieChartThree.vue";
 
 export default {
     extends: Pie,
     name: "charts",
     components: {
-        BubbleChart,
         PieChart,
         BarChart,
+        PieChartTwo,
+        PieChartThree
     },
 
-    data: () => ({
-        dataCollection: {},
-       appealsReview: [],
-        appealsQuiz: [],
-        positiveComment: null,
-        negativeComment: null,
-        globalRating: null,
-        startRating: null,
-        chartOptions: {
-           responsive: true,
-            maintainAspectRatio: false
+    data(){
+        return {
+            dataCollection: {},
+            appealsReview: null,
+            appealsQuiz: null,
+            positiveComment: null,
+            negativeComment: null,
+            globalRating: null,
+            startRating: null,
         }
-    }),
-
-    methods: {
-
     },
 
     async mounted() {
         this.appealsQuiz = await this.$store.dispatch('appeals/getAppealsQuizDataInStorage').catch(err => console.log(err))
         this.appealsReview = await this.$store.dispatch('appeals/getAppealsReviewDataInStorage').catch(err => console.log(err))
 
-        this.dataCollection = {
-            labels: ['Обращения(отзывы)','Обращения(опросы)'],
-            datasets: [{
-                label: '# of Votes',
-                data: [this.appealsReview.length, this.appealsQuiz.length],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                ],
-                borderWidth: 1
-            }]
-        }
-
-
-        console.log(this.appealsReview)
         console.log(this.appealsQuiz)
+        console.log(this.appealsReview)
+        // this.dataCollection = {
+        //     labels: ['Обращения(отзывы)','Обращения(опросы)'],
+        //     datasets: [{
+        //         label: '# of Votes',
+        //         data: [this.appealsReview.length, this.appealsQuiz.length],
+        //         backgroundColor: [
+        //             'rgba(255, 99, 132, 0.2)',
+        //             'rgba(54, 162, 235, 0.2)',
+        //         ],
+        //         borderColor: [
+        //             'rgba(255, 99, 132, 1)',
+        //             'rgba(54, 162, 235, 1)',
+        //         ],
+        //         borderWidth: 1
+        //     }]
+        // }
+
     }
 
 

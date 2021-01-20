@@ -9,9 +9,9 @@ export default {
     },
 
     actions: {
-        getAppealsReviewDataInStorage({commit}) {
-            return new Promise((resolve, reject) => {
-                axios.post('/appeals_review/get')
+        async getAppealsReviewDataInStorage({commit}) {
+            return await new Promise(async (resolve, reject) => {
+                await axios.post('/appeals_review/get')
                 .then(response => {
                     console.log(response);
                     commit('setAppealReviewData', response.data)
@@ -22,9 +22,9 @@ export default {
                 })
             })
         },
-        getAppealsQuizDataInStorage({commit}) {
-            return new Promise((resolve, reject) => {
-                axios.post('/appeals_quiz/get')
+        async getAppealsQuizDataInStorage({commit}) {
+            return await new Promise(async(resolve, reject) => {
+                await axios.post('/appeals_quiz/get')
                 .then(response => {
                     console.log(response);
                     commit('setAppealQuizData', response.data)

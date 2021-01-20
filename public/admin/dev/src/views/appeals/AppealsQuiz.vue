@@ -8,6 +8,15 @@
 <!--                class="fa fa-edit"></i> Редактировать-->
 <!--            </b-button>-->
 
+            <b-button
+                size="sm"
+                class="mar-top"
+                :hidden="!button_hidden"
+                variant="success"
+                @click="downloadExcel"
+            ><i class="fa fa-plus"></i> Скачать
+            </b-button>
+
             <b-table
                 selectable
                 select-mode="single"
@@ -106,6 +115,10 @@ export default {
         }
     },
     methods: {
+        downloadExcel(){
+          window.location.href = 'downloadquiz'
+        },
+
         showModal(action) {
             this.action = action
             this.$bvModal.show('member-form')
@@ -174,8 +187,6 @@ export default {
         },
 
         filteredSCD() {
-            console.log(this.fullDataSectors);
-
             const filtered = this.fullDataSectors.filter(item => {
                 return Object.keys(this.filters).every(key =>
                     String(item[key]).includes(this.filters[key])

@@ -106,7 +106,8 @@ export default {
     data() {
         return {
             action: "",
-            member_selected: Object,
+            member_selected: undefined,
+            mmember_selected: undefined,
             button_hidden: true,
 
             currentPage: 1,

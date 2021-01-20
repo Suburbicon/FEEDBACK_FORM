@@ -12,7 +12,27 @@ class Appeals extends Model {
 
   static public function getData(){
     return DB::table('appeals')->select("*")->orderBy('id', 'asc')->get();
+    // ->get();
   }
+
+    static public function exportData(){
+        $response = DB::table('appeals')
+            ->leftJoin('city', 'appeals.id_city','=','city.id')
+            ->leftJoin('departments', 'appeals.id_department','=','departments.id')
+            ->leftJoin('sectors', 'appeals.id_sector','=','sectors.id')
+            ->select('appeals.id as id',
+                'appeals.name as name',
+                'appeals.phone as phone',
+                'appeals.comment as comment',
+                'city.name      as id_city',
+                'departments.name      as id_department',
+                'sectors.name      as id_sector',
+                'appeals.recomendation_rating as recomendation_rating',
+                'appeals.created_at as created_at'
+            )->orderBy('id', 'ASC');
+
+        return $response;
+    }
 
   static function Validate($request) {
     $request->validate([

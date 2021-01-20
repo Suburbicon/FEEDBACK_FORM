@@ -7,6 +7,13 @@ Route::get('/info', 'AppealsController@index');
 Route::get('/thanks-review', 'AppealsController@result');
 Route::post('/info-fetch', 'AppealsController@store');
 
+Route::get('/downloadreview',function (){
+   return Excel::download( new \App\Exports\AppealsExport(), 'appeals.xls');
+});
+Route::get('/downloadquiz',function (){
+   return Excel::download( new \App\Exports\QuizExport(), 'appeals.xls');
+});
+
 Route::get('qr-code', function () {
     return QrCode::encoding('UTF-8')->size(100)->generate('https://google.com');
 });

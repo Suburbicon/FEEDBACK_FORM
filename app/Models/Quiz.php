@@ -14,6 +14,29 @@ class Quiz extends Model {
     return DB::table('quiz')->select("*")->orderBy('id', 'asc')->get();
   }
 
+    static public function exportData(){
+        $response = DB::table('quiz')
+            ->leftJoin('city', 'quiz.id_city','=','city.id')
+            ->leftJoin('departments', 'quiz.id_department','=','departments.id')
+            ->leftJoin('sectors', 'quiz.id_sector','=','sectors.id')
+            ->select('quiz.id as id',
+                'quiz.name as name',
+                'quiz.liked     as liked',
+                'quiz.not_liked as not_liked',
+                'quiz.phone as phone',
+                'quiz.comment as comment',
+                'quiz.rating    as rating',
+                'city.name      as id_city',
+                'departments.name      as id_department',
+                'sectors.name      as id_sector',
+                'quiz.recomendation_rating as recomendation_rating',
+                'quiz.created_at as created_at'
+            )->orderBy('id', 'ASC');
+
+        return $response;
+    }
+
+
   static function Validate($request) {
     $request->validate([
       'id_city' => 'required|string|max:255',

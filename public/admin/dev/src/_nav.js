@@ -37,7 +37,7 @@ export default {
       icon: 'icon-phone'
     },
     {
-      name: 'Обращения(обзор)',
+      name: 'Обращения(отзыв)',
       url: '/appeals_review',
       icon: 'icon-phone'
     },

@@ -1,45 +1,20 @@
 <template>
     <div class="small">
-        <bubble-chart :chart-data="datacollection" :options="options"></bubble-chart>
-        <button @click="fillData">Randomize</button>
+        <line-chart :chart-data="datacollection"></line-chart>
+        <button @click="fillData()">Randomize</button>
     </div>
 </template>
 
 <script>
-    import BubbleChart from './BubbleChart.js'
+    import LineChart from './BubbleChart.js'
 
     export default {
         components: {
-            BubbleChart
+            LineChart
         },
-        props: ['appealsquiz','appealsreview'],
         data () {
             return {
-                datacollection: {
-                    labels: ['Обращения(отзывы)','Обращения(опросы)'],
-                    datasets: [
-                        {
-                            label: 'Обращения(отзывы)',
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                            ],
-                            data: [this.appealsquiz.length],
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Обращения(опросы)',
-                            backgroundColor: [
-                                'rgba(54, 162, 235, 1)',
-                            ],
-                            data: [this.appealsreview.length],
-                            borderWidth: 1
-                        },
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false
-                }
+                datacollection: null
             }
         },
         mounted () {
@@ -48,27 +23,23 @@
         methods: {
             fillData () {
                 this.datacollection = {
-                    labels: ['Обращения(отзывы)','Обращения(опросы)'],
+                    labels: [this.getRandomInt(), this.getRandomInt()],
                     datasets: [
                         {
-                            label: 'Обращения(отзывы)',
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                            ],
-                            data: [this.appealsquiz.length],
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Обращения(опросы)',
-                            backgroundColor: [
-                                'rgba(54, 162, 235, 1)',
-                            ],
-                            data: [this.appealsreview.length],
-                            borderWidth: 1
-                        },
+                            label: 'Data One',
+                            backgroundColor: '#f87979',
+                            data: [this.getRandomInt(), this.getRandomInt()]
+                        }, {
+                            label: 'Data One',
+                            backgroundColor: '#f87979',
+                            data: [this.getRandomInt(), this.getRandomInt()]
+                        }
                     ]
                 }
             },
+            getRandomInt () {
+                return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+            }
         }
     }
 </script>

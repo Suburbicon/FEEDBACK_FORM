@@ -1,7 +1,6 @@
 <template>
     <div class="small">
         <bar-chart :chart-data="datacollection" :options="options"></bar-chart>
-        <button @click="fillData">Randomize</button>
     </div>
 </template>
 
@@ -20,17 +19,13 @@
                     datasets: [
                         {
                             label: 'Обращения(отзывы)',
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                            ],
+                            backgroundColor: '#04ADBF',
                             data: [this.appealsquiz.length],
                             borderWidth: 1
                         },
                         {
                             label: 'Обращения(опросы)',
-                            backgroundColor: [
-                                'rgba(54, 162, 235, 1)',
-                            ],
+                            backgroundColor: '#F2E0C9',
                             data: [this.appealsreview.length],
                             borderWidth: 1
                         },

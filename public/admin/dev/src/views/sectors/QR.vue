@@ -9,15 +9,19 @@
                 <b-button v-if="items.path_to_qr" type="button" @click="print" size="sm" variant="success" class="button-mar">
                     <i class="fa fa-dot-circle-o"></i> Распечатать
                 </b-button>
-                <b-button size="sm" variant="warning" @click="$bvModal.hide('qr-form')">
+                <b-button size="sm" variant="warning" @click="$bvModal.hide('qr-form')" class="button-cancel">
                     <i class="fa fa-ban"></i> Отменить
                 </b-button>
+                <a download :href="items.path_to_qr" size="sm" id="download" class="button-mar">
+                    <i class="fa fa-download"></i> Скачать
+                </a>
             </div>
         </b-form>
     </b-modal>
 </template>
 
 <script>
+
 import axios from 'axios'
 
 export default {
@@ -45,6 +49,9 @@ export default {
             window.print();
             window.close()
         },
+        download(){
+            window.download(this.items.path_to_qr)
+        }
     }
 }
 </script>
@@ -53,4 +60,7 @@ export default {
 .button-mar {
     margin-right: 5px;
 }
+    .button-cancel{
+        margin-right: 5px;
+    }
 </style>
