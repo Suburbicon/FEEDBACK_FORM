@@ -13,6 +13,7 @@
 - php artisan key:generate (создание ключа)
 - php artisan migrate (миграции)
 - php artisan db:seeds (создание пользователя который уже был забит) 
+Либо
 - php artisan user:create login email password permissions (root = 1) (создание пользователя)
 
 **5) В папке /public/admin/dev выполнить команду**
