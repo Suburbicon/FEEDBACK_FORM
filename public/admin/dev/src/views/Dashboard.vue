@@ -271,22 +271,7 @@ export default {
 
         console.log(this.appealsQuiz)
         console.log(this.appealsReview)
-        // this.dataCollection = {
-        //     labels: ['Обращения(отзывы)','Обращения(опросы)'],
-        //     datasets: [{
-        //         label: '# of Votes',
-        //         data: [this.appealsReview.length, this.appealsQuiz.length],
-        //         backgroundColor: [
-        //             'rgba(255, 99, 132, 0.2)',
-        //             'rgba(54, 162, 235, 0.2)',
-        //         ],
-        //         borderColor: [
-        //             'rgba(255, 99, 132, 1)',
-        //             'rgba(54, 162, 235, 1)',
-        //         ],
-        //         borderWidth: 1
-        //     }]
-        // }
+
 
     }
 

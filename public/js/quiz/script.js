@@ -138,29 +138,23 @@ $(function () {
         let recomendation_rating = localStorage.getItem('recomendation_rating')
 
         let fetchForm = {};
-        let response_q1 = {};
-        let response_q2 = {};
         let liked = '';
         let not_liked = '';
 
-        for (let x = 0; x < 12;x++){
+        for (let x = 0; x < $(form).serializeArray().length;x++){
             fetchForm[$(form).serializeArray()[x]['name']] = $(form).serializeArray()[x]['value']
         }
 
-        response_q1['liked[1]'] = $(form).serializeArray()[1]['value']
-        response_q1['liked[2]'] = $(form).serializeArray()[2]['value']
-        response_q1['liked[3]'] = $(form).serializeArray()[3]['value']
-        response_q2['liked[1]'] = $(form).serializeArray()[5]['value']
-        response_q2['liked[2]'] = $(form).serializeArray()[6]['value']
-        response_q2['liked[3]'] = $(form).serializeArray()[7]['value']
-
-        $.each(response_q1, function (key,data) {
-            liked += data+'. ';
+        $.each($(form).serializeArray(), function(key,data) {
+            if (data['name'] === 'liked[]'){
+                liked += data['value'] + '. '
+            }
         })
-        $.each(response_q2, function (key,data) {
-            not_liked += data+'. ';
+        $.each($(form).serializeArray(), function(key,data) {
+            if (data['name'] === 'not_liked[]'){
+                not_liked += data['value'] + '. '
+            }
         })
-
 
         var paramsGET = {};
 

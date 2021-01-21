@@ -14,23 +14,7 @@
         props: ['appealsquiz','appealsreview'],
         data () {
             return {
-                datacollection: {
-                    labels: ['Обращения(отзывы)','Обращения(опросы)'],
-                    datasets: [
-                        {
-                            label: 'Обращения(отзывы)',
-                            backgroundColor: '#04ADBF',
-                            data: [this.appealsquiz.length],
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Обращения(опросы)',
-                            backgroundColor: '#F2E0C9',
-                            data: [this.appealsreview.length],
-                            borderWidth: 1
-                        },
-                    ]
-                },
+                datacollection: null,
                 options:  {
                     scales: {
                         yAxes: [{
@@ -68,8 +52,8 @@
                 }
             }
         },
-        mounted () {
-            this.fillData()
+        async created () {
+            await this.fillData()
         },
         methods: {
             fillData () {
@@ -77,18 +61,14 @@
                     labels: ['Обращения(отзывы)','Обращения(опросы)'],
                     datasets: [
                         {
-                            label: 'Обращения(отзывы)',
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                            ],
+                            label: 'Обращения(опросы)',
+                            backgroundColor: '#04ADBF',
                             data: [this.appealsquiz.length],
                             borderWidth: 1
                         },
                         {
-                            label: 'Обращения(опросы)',
-                            backgroundColor: [
-                                'rgba(54, 162, 235, 1)',
-                            ],
+                            label: 'Обращения(отзывы)',
+                            backgroundColor: '#F2E0C9',
                             data: [this.appealsreview.length],
                             borderWidth: 1
                         },

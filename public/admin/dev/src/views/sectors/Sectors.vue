@@ -88,10 +88,12 @@
             </b-row>
         </b-card>
        <member-form :items="member_selected" :action="action"></member-form>
-
+        <div v-if="member_selected">
         <qr-form :items="member_selected"></qr-form>
+        </div>
+        <p v-else>No Data</p>
     </b-card-group>
-</template>
+</template> ` 
 
 <script>
 import memberForm from "./Sector";
@@ -107,7 +109,6 @@ export default {
         return {
             action: "",
             member_selected: undefined,
-            mmember_selected: undefined,
             button_hidden: true,
 
             currentPage: 1,
@@ -141,28 +142,34 @@ export default {
         },
 
         QRCodeGenerate() {
-            axios
-                .post(
-                    `/sectors/get_qr?id=${this.member_selected.id}&id_city=${this.member_selected.id_city}&id_department=${this.member_selected.id_department}`
-                )
-                .then(response => {
-                    console.log(response);
-                    this.$store.dispatch("sectors/getSectorsData");
-                })
-                .catch(error => {
-                    console.log(error);
-                });
+            if(this.member_selected.id && this.member_selected.id_city && this.member_selected.id_department){
+                axios
+                    .post(
+                        `/sectors/get_qr?id=${this.member_selected.id}&id_city=${this.member_selected.id_city}&id_department=${this.member_selected.id_department}`
+                    )
+                    .then(response => {
+                        console.log(response);
+                        this.$store.dispatch("sectors/getSectorsData");
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
         },
 
-        rowSelected(items) {
-            let member_selected;
+        rowSelected(items = null) {
+            try {
+                let member_selected;
 
-            if (items.length > 0) {
-                member_selected = { ...items[0] };
+                if (items.length > 0) {
+                    member_selected = { ...items[0] };
+                }
+
+                this.button_hidden = items.length === 0;
+                this.member_selected = member_selected;
+            } catch (e) {
+                console.log(e)
             }
-
-            this.button_hidden = items.length === 0;
-            this.member_selected = member_selected;
         },
 
         clearFilter() {
