@@ -9,11 +9,13 @@ Route::post('/info-fetch', 'AppealsController@store');
 
 Route::get('/downloadreview',function (){
     $time = \Carbon\Carbon::now();
-   return Excel::download( new \App\Exports\AppealsExport(), 'Обращения(отзывы)' . $time->toDateTimeString() .'.xls');
+    date_default_timezone_set('Asia/Almaty');
+   return Excel::download( new \App\Exports\AppealsExport(), 'Отчёт_по_обращениям(отзывы)_' . date("d.m.Y_H-i-s") .'.xls');
 });
 Route::get('/downloadquiz',function (){
     $time = \Carbon\Carbon::now();
-   return Excel::download( new \App\Exports\QuizExport(), 'Обращения(опросы)'.$time->toDateTimeString().'.xls');
+    date_default_timezone_set('Asia/Almaty');
+   return Excel::download( new \App\Exports\QuizExport(), 'Отчёт_по_обращениям(опросы)_'.date("d.m.Y_H-i-s").'.xls');
 });
 
 Route::get('qr-code', function () {

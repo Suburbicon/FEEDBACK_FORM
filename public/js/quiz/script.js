@@ -168,6 +168,11 @@ $(function () {
             }
         }
 
+        if(fetchForm['comment'] === '' || fetchForm['comment_stars'] === ''){
+            fetchForm['comment'] = 'Нет комментария'
+            fetchForm['comment_stars'] = 'Нет комментария'
+        }
+
         fetchForm['liked'] = liked
         fetchForm['not_liked'] = not_liked
         fetchForm['recomendation_rating'] = recomendation_rating
