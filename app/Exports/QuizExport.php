@@ -24,7 +24,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use function React\Promise\all;
 
 
-class QuizExport implements FromQuery,WithMapping,WithHeadings,WithColumnWidths, WithStyles,ShouldAutoSize,WithEvents, With {
+class QuizExport implements FromQuery,WithMapping,WithHeadings,WithColumnWidths, WithStyles,ShouldAutoSize,WithEvents {
 
     public function query() {
         return Quiz::exportData();
