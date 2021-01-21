@@ -93,7 +93,7 @@
         </div>
         <p v-else>No Data</p>
     </b-card-group>
-</template> ` 
+</template>
 
 <script>
 import memberForm from "./Sector";
@@ -108,6 +108,7 @@ export default {
     data() {
         return {
             action: "",
+            member_selected_row: [],
             member_selected: undefined,
             button_hidden: true,
 
@@ -157,12 +158,18 @@ export default {
             }
         },
 
-        rowSelected(items = null) {
+        memberRowSelected(items){
+            if(items.length > 0){
+            this.member_selected_row = { ...items[0]}
+            }
+        },
+
+        rowSelected(items) {
             try {
                 let member_selected;
 
                 if (items.length > 0) {
-                    member_selected = { ...items[0] };
+                    member_selected = {...items[0]} ;
                 }
 
                 this.button_hidden = items.length === 0;

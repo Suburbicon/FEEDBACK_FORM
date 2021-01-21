@@ -8,10 +8,12 @@ Route::get('/thanks-review', 'AppealsController@result');
 Route::post('/info-fetch', 'AppealsController@store');
 
 Route::get('/downloadreview',function (){
-   return Excel::download( new \App\Exports\AppealsExport(), 'appeals.xls');
+    $time = \Carbon\Carbon::now();
+   return Excel::download( new \App\Exports\AppealsExport(), 'Обращения(отзывы)' . $time->toDateTimeString() .'.xls');
 });
 Route::get('/downloadquiz',function (){
-   return Excel::download( new \App\Exports\QuizExport(), 'appeals.xls');
+    $time = \Carbon\Carbon::now();
+   return Excel::download( new \App\Exports\QuizExport(), 'Обращения(опросы)'.$time->toDateTimeString().'.xls');
 });
 
 Route::get('qr-code', function () {
