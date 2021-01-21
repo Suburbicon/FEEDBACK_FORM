@@ -94,7 +94,7 @@ export default new Router({
                 },
                 {
                     path: 'appeals_review',
-                    name: 'Обращения(обзор)',
+                    name: 'Обращения(отзыв)',
                     component: () => import('../views/appeals/AppealsReview')
                 },
                 {
