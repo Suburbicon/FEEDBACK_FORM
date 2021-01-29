@@ -36,7 +36,7 @@
                                 'rgba(3, 191, 191, 1)',
                                 'rgba(1, 89, 89, 1)',
                             ],
-                            data: [this.appealsquiz.length,this.appealsreview.length],
+                            data: [this.appealsreview.length,this.appealsquiz.length],
                             borderWidth: 1
                         },
                     ]

@@ -58,7 +58,7 @@
         methods: {
             fillData () {
                 this.datacollection = {
-                    labels: ['Обращения(отзывы)','Обращения(опросы)'],
+                    labels: ['Обращения(опросы)','Обращения(отзывы)'],
                     datasets: [
                         {
                             label: 'Обращения(опросы)',
