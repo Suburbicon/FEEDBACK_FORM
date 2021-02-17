@@ -167,13 +167,25 @@ export default {
         rowSelected(items) {
             try {
                 let member_selected;
+                let past_value = {};
+                console.log(items)
 
                 if (items.length > 0) {
                     member_selected = {...items[0]} ;
+                    past_value = member_selected;
+                }
+                if(member_selected === undefined){
+                    member_selected = past_value
+                }
+                if(items === undefined){
+                    items = past_value
                 }
 
+                console.log(member_selected)
+
                 this.button_hidden = items.length === 0;
-                this.member_selected = member_selected;
+                this.member_selected = member_selected ? member_selected : past_value;
+                console.log(this.member_selected)
             } catch (e) {
                 console.log(e)
             }
